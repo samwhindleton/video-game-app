@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // ----------------------------------------
 // | MIDDLEWARE                           |
 // ----------------------------------------
-app.use(express.json);
+app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
