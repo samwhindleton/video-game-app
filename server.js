@@ -27,6 +27,7 @@ app.use('/signup', signupController);
 
 const loginController = require('./controllers/users/login.js');
 app.use('/login', loginController);
+
 // ----------------------------------------
 // | ROUTES                               |
 // ----------------------------------------
