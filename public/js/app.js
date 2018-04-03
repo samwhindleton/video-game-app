@@ -11,16 +11,14 @@ app.controller('VideoGameController', ['$http', function($http) {
   this.signupForm = {};
   // sign up function
   this.signup = () => {
-    console.log('i\'m signing up');
+    console.log('signing up');
     $http({
       method: 'POST',
-      // chage later ----------
-      url: '/home',
+      url: '/signup',
       data: this.signupForm
     }).then((response) => {
       this.signupForm = {};
-      // chage later ----------
-      this.user.push(response.data);
+      console.log(response);
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
