@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="VideoGameApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -14,12 +14,67 @@
     <!-- font awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <h1>Test please ignore</h1>
+  <body ng-controller="VideoGameController as game">
+    <div class="main">
+      <!-- <h1>Test please ignore</h1>
+      {{2 + 2}}
+      {{game.test}} -->
 
+      <!-- test game.getGames() -->
+      <div>
+        test get button
+        <button ng-click="game.getGames()" type="submit">get games</button>
 
+        <ul>
+          <li ng-repeat="games in game.gamesRecived"></li>
+        </ul>
+      </div>
 
+      <!-- navbar -->
+      <div>
+        <ul>
+          <li>home</li>
+          <li>other1</li>
+          <li>other2</li>
+          <li>other3</li>
+          <li>other4</li>
+        </ul>
+        <ul>
+          <li>Sign Up</li>
+          <li>Log In</li>
+        </ul>
+      </div>
 
+      <!-- header -->
+      <div class="header">
+        Images, carousel
+      </div>
+
+      <!-- user sign up / log in section -->
+      <div class="">
+        user sign up / log in section
+      </div>
+
+      <!-- user view section -->
+      <div class="">
+        user view section
+      </div>
+
+      <!-- game search section -->
+      <div class="">
+        game search section
+      </div>
+
+      <!-- game view / comment / like section -->
+      <div class="">
+        game view / comment / like section
+      </div>
+
+      <!-- footer -->
+      <div class="">
+        footer
+      </div>
+    </div>
 
     <!-- Optional Bootstrap JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
