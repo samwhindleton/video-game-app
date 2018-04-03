@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="VideoGameApp">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -14,8 +14,21 @@
     <!-- font awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <h1>Test please ignore</h1>
+  <body ng-controller="VideoGameController as game">
+    <!-- <h1>Test please ignore</h1> -->
+    <!-- {{2 + 2}} -->
+    <!-- {{game.test}} -->
+
+    <!-- test game.getGames() -->
+    <div>
+      <button ng-click="game.getGames()" type="submit">get games</button>
+
+      <ul>
+        <li ng-repeat="games in game.gamesRecived"></li>
+      </ul>
+    </div>
+
+
 
 
 
