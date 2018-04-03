@@ -21,9 +21,12 @@ app.use(express.static('public'));
 // ----------------------------------------
 const homeController = require('./controllers/home/home.js');
 app.use('/home', homeController);
+
 const signupController = require('./controllers/users/signup.js');
 app.use('/signup', signupController);
 
+const loginController = require('./controllers/users/login.js');
+app.use('/login', loginController);
 // ----------------------------------------
 // | ROUTES                               |
 // ----------------------------------------
