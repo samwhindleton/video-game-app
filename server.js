@@ -16,16 +16,17 @@ const mongoose = require('mongoose');
 // cmd 'heroku config:set IGDB_API_KEY=foobar'
 // check with cmd 'heroku config'
 const dotenv = require('dotenv').load();
+// Node wrapper for IGDB Video Game Database API.
+const igdb = require('igdb-api-node').default;
+global.IGDB_API_KEY = 'process.env.IGDB_API_KEY';
+const client = igdb();
+
 
 // ----------------------------------------
 // | MIDDLEWARE                           |
 // ----------------------------------------
 app.use(express.json());
 app.use(express.static('public'));
-
-app.get('/', (req, res) => {
-  res.send('index');
-});
 
 
 // ----------------------------------------
@@ -52,6 +53,9 @@ app.get('/', (req, res) => {
 // Update : PUT    '/:id'             6/7 |
 // Delete : DELETE '/:id'             7/7 |
 // ----------------------------------------
+app.get('/', (req, res) => {
+  res.send('index');
+});
 
 
 // ----------------------------------------
