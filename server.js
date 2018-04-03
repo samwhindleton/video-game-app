@@ -11,12 +11,6 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(express.static('public'));
 
-
-
-app.get('/', (req, res) => {
-    res.send('index')
-});
-
 // ----------------------------------------
 // | MODELS                               |
 // ----------------------------------------
@@ -25,7 +19,8 @@ app.get('/', (req, res) => {
 // ----------------------------------------
 // | CONTROLLERS                          |
 // ----------------------------------------
-
+const homeController = require('./controllers/home/home.js');
+app.use('/home', homeController);
 
 // ----------------------------------------
 // | ROUTES                               |

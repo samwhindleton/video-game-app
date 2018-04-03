@@ -11,7 +11,7 @@ app.controller('VideoGameController', ['$http', function($http) {
 
   // // get games function
   this.getGames = () => {
-    console.log('getting some games');
+
   };
 
 }]); // closes MainController controller
