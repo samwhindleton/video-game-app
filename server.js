@@ -4,6 +4,18 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+// dotenv module, used to load env variables
+// [1] add .env to .gitignore
+// [2] create .env file
+// [3] in .env file add: IGDB_API_KEY=foobar
+// ----------
+// [4] access env variable in any backend js file(module, etc) with:
+// [5] process.env.IGDB_API_KEY
+// ----------
+// Heroku setup
+// cmd 'heroku config:set IGDB_API_KEY=foobar'
+// check with cmd 'heroku config'
+const dotenv = require('dotenv').load();
 
 // ----------------------------------------
 // | MIDDLEWARE                           |

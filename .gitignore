@@ -43,4 +43,4 @@ node_modules
 
 # API Keys #
 ##############
-key.js
+*.env
