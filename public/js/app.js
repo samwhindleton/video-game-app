@@ -14,16 +14,17 @@ app.controller('VideoGameController', ['$http', function($http) {
     console.log('getting some games');
 
     // curl -X GET --header "Accept: application/json" --header "user-key: foobar" "https://api-endpoint.igdb.com/games/"
-    $http({
-      method: 'GET',
-      Accept: 'application/json',
-      'user-key': 'process.env.IGDB_API_KEY',
-      url: 'https://api-endpoint.igdb.com/games/',
-    }).then((response) => {
-      console.table(response.data);
-      this.gamesRecived = response.data;
-    }, error => {
-      console.error(error);
-    }).catch(error => console.error('Catch: ', error));
+
+    // $http({
+    //   method: 'GET',
+    //   url: 'https://api-endpoint.igdb.com/games/',
+    //   'user-key': 'process.env.IGDB_API_KEY',
+    //   'Accept': 'application/json'
+    // }).then((response) => {
+    //   console.table(response.data);
+    //   this.gamesRecived = response.data;
+    // }, error => {
+    //   console.error(error);
+    // }).catch(error => console.error('Catch: ', error));
   };
 }]); // closes MainController controller
