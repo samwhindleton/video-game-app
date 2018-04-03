@@ -27,4 +27,5 @@ app.controller('VideoGameController', ['$http', function($http) {
     //   console.error(error);
     // }).catch(error => console.error('Catch: ', error));
   };
+
 }]); // closes MainController controller
