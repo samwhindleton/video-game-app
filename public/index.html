@@ -16,6 +16,113 @@
   </head>
   <body ng-controller="VideoGameController as game">
     <div class="main">
+      <!-- navbar -->
+      <div class="main-navbar">
+        <ul>
+          <li>home</li>
+          <li>I</li>
+          <li>need</li>
+          <li>some</li>
+          <li>style</li>
+        </ul>
+        <ul>
+          <li>Sign Up</li>
+          <li>Log In</li>
+        </ul>
+      </div>
+
+      <!-- header -->
+      <div class="header">
+        <div id="carousel-position" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carousel-position" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-position" data-slide-to="1"></li>
+            <li data-target="#carousel-position" data-slide-to="2"></li>
+            <li data-target="#carousel-position" data-slide-to="3"></li>
+            <li data-target="#carousel-position" data-slide-to="4"></li>
+          </ol>
+          <div class="carousel-inner">
+            <!-- image 1 -->
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="/assets/csgo.png" alt="First slide">
+            </div>
+            <!-- image 2 -->
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/assets/fortnite.jpg" alt="Second slide">
+            </div>
+            <!-- image 3 -->
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/assets/roblox.jpg" alt="Third slide">
+            </div>
+            <!-- image 4 -->
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/assets/skyrim.jpg" alt="Fourth slide">
+            </div>
+            <!-- image 5 -->
+            <div class="carousel-item">
+              <img class="d-block w-100" src="/assets/super-mario.jpg" alt="Fith slide">
+            </div>
+          </div>
+          <!-- left controller -->
+          <a class="carousel-control-prev" href="#carousel-position" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <!-- right controller -->
+          <a class="carousel-control-next" href="#carousel-position" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div> <!-- /.header -->
+
+      <!-- user sign up / log in section -->
+      <div class="session">
+        user sign up / log in section
+        <div>
+          <form ng-submit="game.signup()">
+            <!-- username -->
+            <label for="username">username</label>
+            <input ng-model="game.signupForm.username" type="text" placeholder="username" required>
+            <!-- password -->
+            <label for="password">password</label>
+            <input ng-model="game.signupForm.password" type="password" placeholder="password" required>
+            <!-- submit button -->
+            <button type="submit">submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- user view section -->
+      <div class="user-view">
+        user view section
+      </div>
+
+      <!-- game add/create section -->
+      <div class="game-create">
+        game add/create
+      </div>
+
+      <!-- game edit section -->
+      <div class="game-edit">
+        game edit
+      </div>
+
+      <!-- game view(single) / comment / like section -->
+      <div class="game-view">
+        game view (single) / comment / like section
+      </div>
+
+      <!-- game view(all) section -->
+      <div class="game-view-all">
+        game view (all)
+      </div>
+
+      <!-- footer -->
+      <div class="footer">
+        footer
+      </div>
+
       <!-- <h1>Test please ignore</h1>
       {{2 + 2}}
       {{game.test}} -->
@@ -30,51 +137,7 @@
         </ul>
       </div>
 
-      <!-- navbar -->
-      <div>
-        <ul>
-          <li>home</li>
-          <li>other1</li>
-          <li>other2</li>
-          <li>other3</li>
-          <li>other4</li>
-        </ul>
-        <ul>
-          <li>Sign Up</li>
-          <li>Log In</li>
-        </ul>
-      </div>
-
-      <!-- header -->
-      <div class="header">
-        Images, carousel
-      </div>
-
-      <!-- user sign up / log in section -->
-      <div class="">
-        user sign up / log in section
-      </div>
-
-      <!-- user view section -->
-      <div class="">
-        user view section
-      </div>
-
-      <!-- game search section -->
-      <div class="">
-        game search section
-      </div>
-
-      <!-- game view / comment / like section -->
-      <div class="">
-        game view / comment / like section
-      </div>
-
-      <!-- footer -->
-      <div class="">
-        footer
-      </div>
-    </div>
+    </div> <!-- /.main -->
 
     <!-- Optional Bootstrap JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
