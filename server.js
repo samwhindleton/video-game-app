@@ -5,11 +5,13 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
+
 // ----------------------------------------
 // | MIDDLEWARE                           |
 // ----------------------------------------
 app.use(express.json());
 app.use(express.static('public'));
+
 
 // ----------------------------------------
 // | MODELS                               |
@@ -27,6 +29,7 @@ app.use('/signup', signupController);
 
 const loginController = require('./controllers/users/login.js');
 app.use('/login', loginController);
+
 
 // ----------------------------------------
 // | ROUTES                               |
@@ -52,6 +55,7 @@ mongoose.connect(mongoURI);
 mongoose.connection.once('open', () => {
   console.log('connected to mongod');
 });
+
 
 // ----------------------------------------
 // | LISTENER                             |
