@@ -40,15 +40,15 @@ app.controller('SessionsController', ['$http', function($http) {
         password: this.loginForm.password
       }
     }).then((response) => {
-      this.currentUser = this.loginForm.username;
+      this.currentUser = response.config.data.username;
       this.loginForm = {};
-      console.log(response);
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
   };
 
 }]); // closes SessionsController controller
+
 
 
 /// games controllers

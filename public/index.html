@@ -119,7 +119,10 @@
             <button type="submit">submit</button>
           </form>
           <!-- NOTE: test code for current session/logged in user -->
-          Welcome: {{sess.currentUser}}!
+          <div ng-if="sess.currentUser">
+              Welcome: {{sess.currentUser}}!
+          </div>
+
         </div>
       </div>
 
