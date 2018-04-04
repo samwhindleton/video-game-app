@@ -10,8 +10,8 @@ router.post('/', (req, res) => {
     res.status(201).json({
            status:201,
            message: "user created"
-       });
-  })
+    });
+  });
 });
 
 module.exports = router;
