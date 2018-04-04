@@ -34,7 +34,10 @@ app.controller('SessionsController', ['$http', function($http) {
     $http({
       method: 'POST',
       url: '/login',
-      data: this.loginForm
+      data: {
+        username: this.loginForm.username,
+        password: this.loginForm.password
+      }
     }).then((response) => {
       this.loginForm = {};
       console.log(response);

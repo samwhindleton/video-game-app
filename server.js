@@ -4,6 +4,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 
 // ----------------------------------------
@@ -11,6 +12,12 @@ const mongoose = require('mongoose');
 // ----------------------------------------
 app.use(express.json());
 app.use(express.static('public'));
+// express-session
+app.use(session({
+  secret: "remembergamestop", // any random string
+  resave: false,
+  saveUninitialized: false
+}));
 
 
 // ----------------------------------------
