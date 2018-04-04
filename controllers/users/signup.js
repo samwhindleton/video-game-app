@@ -8,8 +8,8 @@ router.post('/', (req, res) => {
   req.body.password = bcrypt.hashSync(req.body.password, salt)
   User.create(req.body, (err, newUser) => {
     res.status(201).json({
-           status:201,
-           message: "user created"
+         status:201,
+         message: "user created"
     });
   });
 });

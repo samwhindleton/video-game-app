@@ -62,7 +62,7 @@ app.controller('GamesController', ['$http', function($http) {
     console.log('adding game');
     $http({
       method: 'POST',
-      url: '/home',
+      url: '/game',
       data: this.createForm
     }).then((response) => {
       this.createForm = {};
