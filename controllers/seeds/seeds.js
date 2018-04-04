@@ -63,52 +63,50 @@ const newGames = [
   },
 ];
 
+const seeded = [{users: []}, {games: []}];
+
+
 // ----------------------------------------
 // | SEED ROUTES                          |
 // ----------------------------------------
 
 // users
-// create users from newUsers
-router.get('/users', (req, res) => {
+// creates users from newUsers and games from newGames
+router.get('/seeding-users-and-games', (req, res) => {
   let salt = bcrypt.genSaltSync(10);
-
+  // ----------
   for (let i = 0; i < newUsers.length; i++) {
     newUsers[i].password = bcrypt.hashSync(newUsers[i].password, salt);
-
+    // ----------
     User.create(newUsers[i], (error, user) => {
       if (error) {
         res.send(error);
       } else {
-        console.log("user " + newUsers[i].username + " created, password: " + newUsers[i].password);
+        seeded[0].users.push(newUsers[i]);
       };
-    });
-  };
-  // NOTE: redirect to index
-});
-
-// games
-// create games from newGames
-router.get('/games', (req, res) => {
-  for (let i = 0; i < newGames.length; i++) {
-    User.findOne({
-      username: newUsers[i].username
-    }, (error, foundUser) => {
-      if (foundUser) {
-        newGames[i].user_id = foundUser._id;
-        Game.create(newGames[i], (error, game) => {
-          if (error) {
-            res.send(error);
-          } else {
-            console.log("game " + newGames[i].title + " created");
-          };
-        });
-      } else {
-        res.send(error);
-      };
-    });
-  };
-  // NOTE: redirect to index
-});
+      // ----------
+      User.findOne({
+        username: newUsers[i].username
+      }, (error, foundUser) => {
+        if (foundUser) {
+          newGames[i].user_id = foundUser._id;
+          // ----------
+          Game.create(newGames[i], (error, game) => {
+            if (error) {
+              res.send(error);
+            } else {
+              seeded[1].games.push(newGames[i]);
+            };
+          }); // end game create
+        } else {
+          res.send(error);
+        };
+      });
+    }); // end user create
+  }; // end for loop
+  // FIXME: change to redirect to index
+  res.json(seeded);
+}); // end seed route
 
 
 // ----------------------------------------
