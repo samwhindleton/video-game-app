@@ -37,6 +37,10 @@ app.use('/signup', signupController);
 const loginController = require('./controllers/users/login.js');
 app.use('/login', loginController);
 
+// seeds
+const seedController = require('./controllers/seeds/seeds.js');
+app.use('/seed', seedController);
+
 
 // ----------------------------------------
 // | ROUTES                               |
