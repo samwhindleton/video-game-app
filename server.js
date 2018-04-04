@@ -28,14 +28,18 @@ app.use(session({
 // ----------------------------------------
 // | CONTROLLERS                          |
 // ----------------------------------------
-const homeController = require('./controllers/home/home.js');
-app.use('/home', homeController);
+const gameController = require('./controllers/game.js');
+app.use('/game', gameController);
 
 const signupController = require('./controllers/users/signup.js');
 app.use('/signup', signupController);
 
 const loginController = require('./controllers/users/login.js');
 app.use('/login', loginController);
+
+// seeds
+const seedController = require('./controllers/seeds/seeds.js');
+app.use('/seed', seedController);
 
 
 // ----------------------------------------
