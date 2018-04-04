@@ -10,4 +10,18 @@ router.post('/', (req, res) => {
   });
 });
 
+//Update game
+router.put('/:id', (req, res) => {
+  Game.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGame) => {
+    res.json(updatedGame)
+  });
+});
+
+//Update game
+router.delete('/:id', (req, res) => {
+  Game.findByIdAndRemove(req.params.id, (err, deletedGame) => {
+    res.json(deletedGame)
+  });
+});
+
 module.exports = router;
