@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <!-- title -->
-    <title>Video Game App</title>
+    <title>WASD.it</title>
     <!-- angular cdn  -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <!-- main js -->
@@ -14,7 +14,8 @@
     <!-- font awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
   </head>
-  <body ng-controller="VideoGameController as game">
+
+  <body ng-controller="SessionsController as sess">
     <div class="main">
       <!-- navbar -->
       <div class="main-navbar">
@@ -27,6 +28,7 @@
         </ul>
         <ul>
           <li>Sign Up</li>
+          <li><a href="#profile" ng-click="sess.getCurrentSessionUser()">Profile</a></li>
           <li>Log In</li>
         </ul>
       </div> <!-- /.main-navbar -->
@@ -76,17 +78,43 @@
         </div>
       </div> <!-- /.header -->
 
-      <!-- user sign up / log in section -->
-      <div class="session">
-        user sign up / log in section
+      <!-- user sign up section -->
+      <div class="session-signup">
+        user sign up section
         <div>
-          <form ng-submit="game.signup()">
+          <form ng-submit="sess.signup()">
+            <!-- first name -->
+            <label for="firstname">first name</label>
+            <input ng-model="sess.signupForm.firstname" autocomplete="off" maxlength="30" minlength="2" placeholder="first name" type="text" required>
+            <!-- last name -->
+            <label for="lastname">last name</label>
+            <input ng-model="sess.signupForm.lastname" autocomplete="off" maxlength="30" minlength="2" placeholder="last name" type="text" required>
+            <!-- email -->
+            <label for="email">email</label>
+            <input ng-model="sess.signupForm.email" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
             <!-- username -->
             <label for="username">username</label>
-            <input ng-model="game.signupForm.username" type="text" placeholder="username" required>
+            <input ng-model="sess.signupForm.username" autocomplete="off" maxlength="30" minlength="2" placeholder="username" type="text" required>
             <!-- password -->
             <label for="password">password</label>
-            <input ng-model="game.signupForm.password" type="password" placeholder="password" required>
+            <input ng-model="sess.signupForm.password" autocomplete="off" maxlength="30" minlength="8" placeholder="password" type="password" required>
+            <!-- submit button -->
+            <button type="submit">submit</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- user log in section -->
+      <div class="session-login">
+        user log in section
+        <div>
+          <form ng-submit="sess.login()">
+            <!-- username -->
+            <label for="username">username</label>
+            <input name="username" ng-model="sess.loginForm.username" type="text" placeholder="username" required>
+            <!-- password -->
+            <label for="password">password</label>
+            <input name="password" ng-model="sess.loginForm.password" type="password" placeholder="password" required>
             <!-- submit button -->
             <button type="submit">submit</button>
           </form>
@@ -94,13 +122,35 @@
       </div>
 
       <!-- user view section -->
-      <div class="user-view">
+      <div id="profile" class="user-view">
         user view section
       </div>
 
       <!-- game add/create section -->
       <div class="game-create">
         game add/create
+        <div ng-controller="GamesController as gameCon">
+          <form ng-submit="gameCon.create()">
+            <!-- uuid -->
+            <!-- FIXME: uuid fix / fix session login above -->
+            <label for="uuid">username</label>
+            <input ng-model="sess.loginForm.username" placeholder="{{sess.loginForm.username}}" type="text" readonly>
+            <!-- title -->
+            <label for="title">title</label>
+            <input ng-model="gameCon.createForm.title" autocomplete="off" maxlength="50" minlength="2" placeholder="game title" type="text" required>
+            <!-- release date -->
+            <label for="release date">release date</label>
+            <input ng-model="gameCon.createForm.releaseDate" autocomplete="off" maxlength="9" minlength="4" placeholder="release date" type="date" required>
+            <!-- image -->
+            <label for="image">image</label>
+            <input ng-model="gameCon.createForm.image" autocomplete="off" maxlength="100" minlength="5" placeholder="image url" type="url" required>
+            <!-- description -->
+            <label for="description">descriptione</label>
+            <input ng-model="gameCon.createForm.description" autocomplete="off" maxlength="30" minlength="2" placeholder="description" type="text" required>
+            <!-- submit button -->
+            <button type="submit">submit</button>
+          </form>
+        </div>
       </div>
 
       <!-- game edit section -->
