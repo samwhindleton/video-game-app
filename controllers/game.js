@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Game = require('../../models/game.js');
+const Game = require('../models/game.js');
 
 //Create new game with user id
 router.post('/', (req, res) => {
