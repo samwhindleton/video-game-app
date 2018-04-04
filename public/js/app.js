@@ -9,6 +9,7 @@ app.controller('SessionsController', ['$http', function($http) {
   this.signupForm = {};
   // holds data recived from log in form
   this.loginForm = {};
+  this.currentUser = "";
 
   // sign up function
   this.signup = () => {
@@ -39,6 +40,7 @@ app.controller('SessionsController', ['$http', function($http) {
         password: this.loginForm.password
       }
     }).then((response) => {
+      this.currentUser = this.loginForm.username;
       this.loginForm = {};
       console.log(response);
     }, (error) => {
