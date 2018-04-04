@@ -118,6 +118,8 @@
             <!-- submit button -->
             <button type="submit">submit</button>
           </form>
+          <!-- NOTE: test code for current session/logged in user -->
+          Welcome: {{sess.currentUser}}!
         </div>
       </div>
 
@@ -132,15 +134,18 @@
         <div ng-controller="GamesController as gameCon">
           <form ng-submit="gameCon.create()">
             <!-- uuid -->
-            <!-- FIXME: uuid fix / fix session login above -->
             <label for="uuid">username</label>
-            <input ng-model="sess.loginForm.username" placeholder="{{sess.loginForm.username}}" type="text" readonly>
+            <input name="username" ng-model="sess.currentUser" placeholder="{{sess.currentUser}}" type="text" readonly>
             <!-- title -->
             <label for="title">title</label>
             <input ng-model="gameCon.createForm.title" autocomplete="off" maxlength="50" minlength="2" placeholder="game title" type="text" required>
             <!-- release date -->
             <label for="release date">release date</label>
-            <input ng-model="gameCon.createForm.releaseDate" autocomplete="off" maxlength="9" minlength="4" placeholder="release date" type="date" required>
+            <input ng-model="gameCon.createForm.releaseDate" autocomplete="off" placeholder="release date" type="date" required>
+            <!-- genre -->
+            <!-- NOTE change to dropdown selection menu? -->
+            <label for="genre">genre</label>
+            <input ng-model="gameCon.createForm.genre" autocomplete="off" maxlength="50" minlength="2" placeholder="genre" type="text" required>
             <!-- image -->
             <label for="image">image</label>
             <input ng-model="gameCon.createForm.image" autocomplete="off" maxlength="100" minlength="5" placeholder="image url" type="url" required>
