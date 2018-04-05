@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const Game = require('../models/game.js');
 
+// get all games
+router.get('/', (req,res)=>{
+  Game.find({}, (err, foundGame)=>{
+    res.json(foundGame);
+  });
+});
+
+// NOTE: get user created games
+
 //Create new game with user id
 router.post('/', (req, res) => {
   req.body.user_id = req.session.currentuser._id

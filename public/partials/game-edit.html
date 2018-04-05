@@ -1,0 +1,35 @@
+<!-- game edit -->
+<div class="game-edit" id="game-edit">
+  <div>
+    <h1>edit game</h1>
+  </div>
+  <form ng-submit="gameCon.edit()">
+    <!-- uuid -->
+    <div>
+      <input name="username" ng-model="sess.currentUser" placeholder="{{sess.currentUser}}" type="text" readonly>
+    </div>
+    <!-- title -->
+    <div>
+      <input ng-model="gameCon.createForm.title" autocomplete="off" maxlength="50" minlength="2" placeholder="game title" type="text" required>
+    </div>
+    <!-- release date -->
+    <div>
+      <input ng-model="gameCon.createForm.releaseDate" autocomplete="off" placeholder="release date" type="date" required>
+    </div>
+    <!-- genre -->
+    <!-- NOTE change to dropdown selection menu? -->
+    <div>
+      <input ng-model="gameCon.createForm.genre" autocomplete="off" maxlength="50" minlength="2" placeholder="genre" type="text" required>
+    </div>
+    <!-- image -->
+    <div>
+      <input ng-model="gameCon.createForm.image" autocomplete="off" maxlength="100" minlength="5" placeholder="image url" type="url" required>
+    </div>
+    <!-- description -->
+    <div>
+      <input ng-model="gameCon.createForm.description" autocomplete="off" maxlength="30" minlength="2" placeholder="description" type="text" required>
+    </div>
+    <!-- submit button -->
+    <button type="submit">submit</button>
+  </form>
+</div> <!-- /.game-edit -->

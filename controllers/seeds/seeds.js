@@ -83,28 +83,27 @@ router.get('/seeding-users-and-games', (req, res) => {
         res.send(error);
       } else {
         seeded[0].users.push(newUsers[i]);
+        // ----------
+        User.findOne({
+          username: newUsers[i].username
+        }, (error, foundUser) => {
+          if (foundUser) {
+            newGames[i].user_id = foundUser._id;
+            // ----------
+            Game.create(newGames[i], (error, game) => {
+              if (error) {
+                res.send(error);
+              } else {
+                seeded[1].games.push(newGames[i]);
+              };
+            }); // end game create
+          } else {
+            res.send(error);
+          };
+        });
       };
-      // ----------
-      User.findOne({
-        username: newUsers[i].username
-      }, (error, foundUser) => {
-        if (foundUser) {
-          newGames[i].user_id = foundUser._id;
-          // ----------
-          Game.create(newGames[i], (error, game) => {
-            if (error) {
-              res.send(error);
-            } else {
-              seeded[1].games.push(newGames[i]);
-            };
-          }); // end game create
-        } else {
-          res.send(error);
-        };
-      });
     }); // end user create
   }; // end for loop
-  // FIXME: change to redirect to index
   res.json(seeded);
 }); // end seed route
 
