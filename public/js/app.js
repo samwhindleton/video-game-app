@@ -93,6 +93,8 @@ app.controller('GamesController', ['$http', function($http) {
     }).then((response) => {
       this.createForm = {};
       console.log(response);
+      this.getAllGames()
+      this.getUserCreatedGames()
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
