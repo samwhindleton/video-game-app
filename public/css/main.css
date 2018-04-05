@@ -39,9 +39,6 @@ navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .navbar {
  background: rgba(34, 33, 33, 0.55);
- position: fixed;
- width: 100%;
- z-index: 1;
 }
 
 
