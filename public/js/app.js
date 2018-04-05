@@ -18,19 +18,27 @@ app.controller('IncludesController', ['$http', function($http) {
 // sessions controllers
 app.controller('SessionsController', ['$http', function($http) {
 
-  // Dynamically change includes
-  // 1
-  this.includePath = 'partials/header.html';
-  // 2
-  this.changeInclude = (path) => {
-    this.includePath = 'partials/'+ path +'.html';
-  }
+  // // Dynamically change includes
+  // // 1
+  // this.includePath = 'partials/header.html';
+  // // 2
+  // this.changeInclude = (path) => {
+  //   this.includePath = 'partials/'+ path +'.html';
+  // }
 
   // holds data recived from sign up form
   this.signupForm = {};
   // holds data recived from log in form
   this.loginForm = {};
   this.currentUser = "";
+
+  // default value of this.showNavItem
+  this.showNavItem = true;
+  // function to toggle navbar items show/hide
+  this.toggleNavbarItems = () => {
+    this.showNavItem = !this.showNavItem;
+    console.log(this.showNavItem);
+  };
 
   // sign up function
   this.signup = () => {
@@ -62,6 +70,7 @@ app.controller('SessionsController', ['$http', function($http) {
     }).then((response) => {
       this.currentUser = response.config.data.username;
       this.loginForm = {};
+      this.toggleNavbarItems();
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
@@ -93,8 +102,8 @@ app.controller('GamesController', ['$http', function($http) {
     }).then((response) => {
       this.createForm = {};
       console.log(response);
-      this.getAllGames()
-      this.getUserCreatedGames()
+      this.getAllGames();
+      this.getUserCreatedGames();
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
