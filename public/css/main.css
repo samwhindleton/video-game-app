@@ -37,7 +37,12 @@ body {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
+.navbar {
+ background: rgba(34, 33, 33, 0.55);
+ position: fixed;
+ width: 100%;
+ z-index: 1;
+}
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -45,36 +50,97 @@ header, carousel
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .carousel-inner > div > img {
   height: 100vh;
-  width: 100vw;
+  /* height: calc(100vh - 56px);
+  height: -moz-calc(100vh - 56px);
+  height: -o-calc(100vh - 56px);
+  height: -webkit-calc(100vh - 56px); */
   /* prevents image distortion */
   object-fit: cover;
   object-position: 50% 50%;
 }
 
 
+/* -------------------- */
+.about,
+.contact,
+.game-create,
+.game-edit,
+.game-view-all,
+.game-view,
+.session-login,
+.session-signup,
+.user-view {
+  min-height: 100vh;
+  width: 100vw;
+}
+/* -------------------- */
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-sessions
+signup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .session-signup {
-  background: aqua;
+  background: rgb(191, 255, 196);
   height: 100vh;
   width: 100vw;
-}
-
-.session-login {
-  background: teal;
-  height: 100vh;
-  width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-user-view
+login
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.user-view {
-  background: pink;
+.session-login {
+  background: rgb(191, 255, 245);
   height: 100vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+game view(all)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.game-view-all {
+  background: rgb(190, 181, 159);
+  min-height: 100vh;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+game view(single)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.game-view {
+  background: rgb(246, 247, 189);
+  min-height: 100vh;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+user profile
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.user-view {
+  background: rgb(255, 223, 254);
+  min-height: 100vh;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
@@ -82,9 +148,12 @@ user-view
 game add/create
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-create {
-  background: green;
-  height: 100vh;
+  background: rgb(140, 140, 140);
+  min-height: 100vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -92,29 +161,74 @@ game add/create
 game edit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-edit {
-  background: purple;
-  height: 100vh;
+  background: rgb(193, 191, 255);
+  min-height: 100vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-game view (single)
+about
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.game-view {
-  background: orange;
-  height: 100vh;
+.about {
+  background: rgb(251, 208, 168);
+  min-height: 100vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.about > h1 {
+  margin: 2em 0 0 0;
+}
+
+.about > p {
+  width: 50%;
+  color: rgb(40, 39, 39);
+  margin: 0;
+}
+
+.about > p:nth-child(3) {
+  margin-bottom: 7em;
 }
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-game view (all)
+contact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.game-view-all {
-  background: yellow;
-  height: 100vh;
+.contact {
+  background: rgb(191, 226, 255);
+  min-height: 100vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact > form {
+  width: 50%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact > form > div:nth-child(4) {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.contact > form > div > textarea {
+  width: 100%%;
 }
 
 
@@ -123,6 +237,18 @@ footer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .footer {
   background: black;
-  height: 100vh;
+  min-height: 30vh;
   width: 100vw;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 0;
+}
+
+.footer > p {
+  width: 50%;
+  color: rgb(209, 209, 209);
+  margin: 0;
+  margin: 7em;
 }

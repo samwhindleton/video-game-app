@@ -1,0 +1,26 @@
+<!-- user view -->
+<div class="user-view" id="user-view">
+  <div>
+    <h1>user profile page</h1>
+  </div>
+  <!-- user added/created games -->
+  <ul>
+    <li ng-repeat="games in gameCon.userCreatedGames">
+      <span ng-click="(gameCon.indexOfShow === $index) ? gameCon.indexOfShow = null : gameCon.indexOfShow = $index">{{games.title}}</span>
+      <span>
+        <a ng-click="(gameCon.indexOfShow === $index) ? gameCon.indexOfShow = null : gameCon.indexOfShow = $index">
+          <i class="fas fa-eye"></i>
+        </a>
+        <!-- edit button
+        when clicked, only show edit view of selected game -->
+        <a ng-click="(gameCon.indexOfEditToShow === $index) ? gameCon.indexOfEditToShow = null : gameCon.indexOfEditToShow = $index">
+          <i class="fas fa-edit"></i>
+        </a>
+        <!-- delete button -->
+        <a ng-click="gameCon.deleteUserCreatedGame(games._id)">
+          <i class="fas fa-trash-alt"></i>
+        </a>
+      </span>
+    </li>
+  </ul>
+</div> <!-- /.user-view -->
