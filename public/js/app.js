@@ -18,13 +18,13 @@ app.controller('IncludesController', ['$http', function($http) {
 // sessions controllers
 app.controller('SessionsController', ['$http', function($http) {
 
-  // Dynamically change includes
-  // 1
-  this.includePath = 'partials/header.html';
-  // 2
-  this.changeInclude = (path) => {
-    this.includePath = 'partials/'+ path +'.html';
-  }
+  // // Dynamically change includes
+  // // 1
+  // this.includePath = 'partials/header.html';
+  // // 2
+  // this.changeInclude = (path) => {
+  //   this.includePath = 'partials/'+ path +'.html';
+  // }
 
   // holds data recived from sign up form
   this.signupForm = {};
