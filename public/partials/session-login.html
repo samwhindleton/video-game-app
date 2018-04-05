@@ -1,0 +1,21 @@
+<!-- user log in section -->
+<div class="session-login" id="session-login">
+  <div>
+    <div>
+      <h1>login</h1>
+    </div>
+    <form ng-submit="sess.login()">
+      <div>
+        <input name="username" ng-model="sess.loginForm.username" type="text" placeholder="username" required>
+      </div>
+      <div>
+        <input name="password" ng-model="sess.loginForm.password" type="password" placeholder="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">login</button>
+    </form>
+
+    <div ng-if="sess.currentUser">
+      Welcome: {{sess.currentUser}}!
+    </div>
+  </div>
+</div> <!-- /.session-login -->

@@ -1,0 +1,32 @@
+<!-- user sign up -->
+<div class="session-signup" id="session-signup">
+  <div>
+    <div>
+      <h1>signup</h1>
+    </div>
+    <form ng-submit="sess.signup()">
+      <!-- first name -->
+      <div>
+        <input ng-model="sess.signupForm.firstname" autocomplete="off" maxlength="30" minlength="2" placeholder="first name" type="text" required>
+      </div>
+      <!-- last name -->
+      <div>
+        <input ng-model="sess.signupForm.lastname" autocomplete="off" maxlength="30" minlength="2" placeholder="last name" type="text" required>
+      </div>
+      <!-- email -->
+      <div>
+        <input ng-model="sess.signupForm.email" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
+      </div>
+      <!-- username -->
+      <div>
+        <input ng-model="sess.signupForm.username" autocomplete="off" maxlength="30" minlength="2" placeholder="username" type="text" required>
+      </div>
+      <!-- password -->
+      <div>
+        <input ng-model="sess.signupForm.password" autocomplete="off" maxlength="30" minlength="8" placeholder="password" type="password" required>
+      </div>
+      <!-- submit button -->
+      <button type="submit">submit</button>
+    </form>
+  </div>
+</div> <!-- /.session-signup -->
