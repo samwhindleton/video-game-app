@@ -5,19 +5,19 @@
   </div>
   <!-- user added/created games -->
   <ul>
-    <li ng-repeat="games in gameCon.userCreatedGames">
-      <span ng-click="(gameCon.indexOfShow === $index) ? gameCon.indexOfShow = null : gameCon.indexOfShow = $index">{{games.title}}</span>
+    <li ng-repeat="games in main.userCreatedGames">
+      <span ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">{{games.title}}</span>
       <span>
-        <a ng-click="(gameCon.indexOfShow === $index) ? gameCon.indexOfShow = null : gameCon.indexOfShow = $index">
+        <a ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">
           <i class="fas fa-eye"></i>
         </a>
         <!-- edit button
         when clicked, only show edit view of selected game -->
-        <a ng-click="(gameCon.indexOfEditToShow === $index) ? gameCon.indexOfEditToShow = null : gameCon.indexOfEditToShow = $index">
+        <a ng-click="(main.indexOfEditToShow === $index) ? main.indexOfEditToShow = null : main.indexOfEditToShow = $index">
           <i class="fas fa-edit"></i>
         </a>
         <!-- delete button -->
-        <a ng-click="gameCon.deleteUserCreatedGame(games._id)">
+        <a ng-click="main.deleteUserCreatedGame(games._id)">
           <i class="fas fa-trash-alt"></i>
         </a>
       </span>

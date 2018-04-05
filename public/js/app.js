@@ -3,8 +3,11 @@ const app = angular.module('VideoGameApp', []);
 
 
 // CONTROLLERS
-// includes controllers
-app.controller('IncludesController', ['$http', function($http) {
+// main controller
+app.controller('MainController', ['$http', function($http) {
+// ----------------------------------------
+// | included                             |
+// ----------------------------------------
   // Dynamically change includes
   // 1
   this.includePath = 'partials/header.html';
@@ -12,25 +15,26 @@ app.controller('IncludesController', ['$http', function($http) {
   this.changeInclude = (path) => {
     this.includePath = 'partials/'+ path +'.html';
   };
-}]); // closes IncludesController controller
+// ----------------------------------------
+// | /included                            |
+// ----------------------------------------
 
-
-// sessions controllers
-app.controller('SessionsController', ['$http', function($http) {
-
-  // Dynamically change includes
-  // 1
-  this.includePath = 'partials/header.html';
-  // 2
-  this.changeInclude = (path) => {
-    this.includePath = 'partials/'+ path +'.html';
-  }
-
+// ----------------------------------------
+// | sessions                             |
+// ----------------------------------------
   // holds data recived from sign up form
   this.signupForm = {};
   // holds data recived from log in form
   this.loginForm = {};
   this.currentUser = "";
+
+  // default value of this.showNavItem
+  this.showNavItem = true;
+  // function to toggle navbar items show/hide
+  this.toggleNavbarItems = () => {
+    this.showNavItem = !this.showNavItem;
+    console.log(this.showNavItem);
+  };
 
   // sign up function
   this.signup = () => {
@@ -62,15 +66,34 @@ app.controller('SessionsController', ['$http', function($http) {
     }).then((response) => {
       this.currentUser = response.config.data.username;
       this.loginForm = {};
+      this.toggleNavbarItems();
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
   };
-}]); // closes SessionsController controller
 
+  // log out function
+  this.logout = () => {
+    // NOTE: remove log on project complete
+    console.log('logging out');
+    $http({
+      method: 'DELETE',
+      url: '/login',
+    }).then((response) => {
+      console.log(response);
+      this.currentUser = "";
+      this.toggleNavbarItems();
+    }, (error) => {
+      console.error(error);
+    }).catch((error) => console.error('Catch: ', error));
+  };
+// ----------------------------------------
+// | /sessions                            |
+// ----------------------------------------
 
-/// games controllers
-app.controller('GamesController', ['$http', function($http) {
+// ----------------------------------------
+// | games                                |
+// ----------------------------------------
   // holds data recived from log in form
   this.createForm = {};
   // holds data recived from get function
@@ -93,6 +116,8 @@ app.controller('GamesController', ['$http', function($http) {
     }).then((response) => {
       this.createForm = {};
       console.log(response);
+      this.getAllGames();
+      this.getUserCreatedGames();
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
@@ -162,4 +187,7 @@ app.controller('GamesController', ['$http', function($http) {
   // run get functions on page load
   this.getAllGames();
   this.getUserCreatedGames();
-}]); // closes GamesController controller
+// ----------------------------------------
+// | /games                               |
+// ----------------------------------------
+}]); // closes MainController controller
