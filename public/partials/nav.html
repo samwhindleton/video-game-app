@@ -1,6 +1,6 @@
 <!-- navbar -->
 <nav ng-controller="SessionsController as sess" class="navbar fixed-top navbar-expand-md navbar-dark">
-  <a ng-click="base.changeInclude('header')" class="navbar-brand" href="#">WASD.it</a>
+  <a ng-click="inc.changeInclude('header')" class="navbar-brand" href="#">WASD.it</a>
   <!-- <a class="navbar-brand" href="#home">WASD.it</a> -->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -8,44 +8,50 @@
   <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a ng-click="base.changeInclude('header')" class="nav-link">home</a>
+        <a ng-click="inc.changeInclude('header')" class="nav-link">home</a>
         <!-- <a class="nav-link" href="#home">home</a> -->
       </li>
       <li class="nav-item">
-        <a ng-click="base.changeInclude('game-view-all')" class="nav-link">games</a>
+        <a ng-click="inc.changeInclude('game-view-all')" class="nav-link">games</a>
         <!-- <a class="nav-link" href="#game-view-all">games</a> -->
       </li>
       <li class="nav-item">
-        <a ng-click="base.changeInclude('about')" class="nav-link">about</a>
+        <a ng-click="inc.changeInclude('about')" class="nav-link">about</a>
         <!-- <a class="nav-link" href="#about">about</a> -->
       </li>
       <li class="nav-item">
-        <a ng-click="base.changeInclude('contact')" class="nav-link">contact</a>
+        <a ng-click="inc.changeInclude('contact')" class="nav-link">contact</a>
         <!-- <a class="nav-link" href="#contact">contact</a> -->
       </li>
     </ul>
     <ul class="navbar-nav">
-      <li ng-if="sess.currentUser" class="nav-item">
-        <a ng-click="base.changeInclude('user-view')" class="nav-link">profile</a>
+      <!-- <li ng-if="sess.currentUser" class="nav-item"> -->
+      <li class="nav-item">
+        <a ng-click="inc.changeInclude('user-view')" class="nav-link">profile</a>
         <!-- <a class="nav-link" href="#user-view">profile</a> -->
       </li>
-      <li ng-if="sess.currentUser" class="nav-item">
-        <a ng-click="base.changeInclude('game-create')" class="nav-link">add game</a>
+      <!-- <li ng-if="sess.currentUser" class="nav-item"> -->
+      <li class="nav-item">
+        <a ng-click="inc.changeInclude('game-create')" class="nav-link">add game</a>
         <!-- <a class="nav-link" href="#game-create">add game</a> -->
       </li>
-      <li ng-if="sess.currentUser" class="nav-item">
-        <a ng-click="base.changeInclude('game-edit')" class="nav-link">edit game</a>
+      <!-- <li ng-if="sess.currentUser" class="nav-item"> -->
+      <li class="nav-item">
+        <a ng-click="inc.changeInclude('game-edit')" class="nav-link">edit game</a>
         <!-- <a class="nav-link" href="#game-edit">edit game</a> -->
       </li>
-      <li ng-if="sess.currentUser" class="nav-item">
+      <!-- <li ng-if="sess.currentUser" class="nav-item"> -->
+      <li class="nav-item">
         <!-- <a class="nav-link" href="#">logout</a> -->
       </li>
-      <li ng-if="sess.showNavItem" class="nav-item">
-        <a ng-click="base.changeInclude('session-signup')" class="nav-link">signup</a>
+      <!-- <li ng-if="sess.showNavItem" class="nav-item"> -->
+      <li class="nav-item">
+        <a ng-click="inc.changeInclude('session-signup')" class="nav-link">signup</a>
         <!-- <a class="nav-link" href="#session-signup">signup</a> -->
       </li>
-      <li ng-if="sess.showNavItem" class="nav-item">
-        <a ng-click="base.changeInclude('session-login')" class="nav-link">login</a>
+      <!-- <li ng-if="sess.showNavItem" class="nav-item"> -->
+      <li class="nav-item">
+        <a ng-click="inc.changeInclude('session-login')" class="nav-link">login</a>
         <!-- <a class="nav-link" href="#session-login">login</a> -->
       </li>
     </ul>
