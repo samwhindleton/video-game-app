@@ -1,10 +1,10 @@
 // MODULE
-const app = angular.module('VideoGameApp', []);
+const app = angular.module('VideoGameApp', ['ngCookies']);
 
 
 // CONTROLLERS
 // main controller
-app.controller('MainController', ['$http', function($http) {
+app.controller('MainController', ['$scope','$cookies','$http', function($scope,$cookies,$http) {
 // ----------------------------------------
 // | included                             |
 // ----------------------------------------
@@ -67,6 +67,9 @@ app.controller('MainController', ['$http', function($http) {
     }).then((response) => {
       this.currentUser = response.config.data.username;
       this.currentUserId = response.data.message._id;
+      // save browser cookies, logged in username and user_id
+      $cookies.put('wasd.it.session', this.currentUser);
+      $cookies.put('wasd.it.session.user_id', this.currentUserId);
       this.loginForm = {};
       this.toggleNavbarItems();
     }, (error) => {
@@ -85,6 +88,9 @@ app.controller('MainController', ['$http', function($http) {
       console.log(response);
       this.currentUser = "";
       this.toggleNavbarItems();
+      // removes browser cookies, logged in username and user_id
+      $cookies.remove('wasd.it.session', this.currentUser);
+      $cookies.remove('wasd.it.session.user_id', this.currentUserId);
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
@@ -192,11 +198,32 @@ app.controller('MainController', ['$http', function($http) {
       console.error(error);
     }).catch(error => console.error('Catch: ', error));
   };
-
-  // run get functions on page load
-  this.getAllGames();
-  this.getUserCreatedGames();
 // ----------------------------------------
 // | /games                               |
 // ----------------------------------------
+
+// ----------------------------------------
+// | cookies                              |
+// ----------------------------------------
+  // check browser for previous logged in user cookies function
+  this.checkLoginSession = () => {
+    $scope.loggedInSessionCookie = $cookies.get('wasd.it.session');
+    $scope.loggedInSessionIdCookie = $cookies.get('wasd.it.session.user_id');
+    this.currentUser = $scope.loggedInSessionCookie;
+    this.currentUserId = $scope.loggedInSessionIdCookie;
+    // if found cookies toggle(hide/show) items on navbar
+    if (this.currentUser = $scope.loggedInSessionCookie) {
+      this.showNavItem = false;
+    } else {
+      this.showNavItem = true;
+    }
+  };
+// ----------------------------------------
+// | /cookies                             |
+// ----------------------------------------
+
+  // run these functions on page load
+  this.checkLoginSession();
+  this.getAllGames();
+  this.getUserCreatedGames();
 }]); // closes MainController controller
