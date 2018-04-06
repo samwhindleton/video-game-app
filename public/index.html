@@ -25,9 +25,25 @@
       <div ng-include="main.includePath"></div>
 
       <!-- footer -->
-      <div class="footer" id="footer">
-        <h1>footer</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div class="footer container-fluid d-flex flex-column justify-content-center" id="footer">
+        <!-- class="footer" -->
+        <div class="social-media d-flex flex-wrap justify-content-center">
+          <i class="fab fa-github-alt"></i>
+          <i class="fab fa-steam"></i>
+          <i class="fab fa-twitch"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+        <div class="copy d-flex justify-content-center">
+          <p>
+            &copy;
+            <!-- display current year -->
+            <script>
+              new Date().getFullYear()>=2018&&document.write(new Date().getFullYear());
+            </script>
+            <a href="https://github.com/samwhindleton/video-game-app" target="_blank">WASD</a>. all rights reserved.
+          </p>
+        </div>
       </div> <!-- /.footer -->
 
     </div> <!-- /.main -->

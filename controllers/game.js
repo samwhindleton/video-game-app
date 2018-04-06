@@ -9,8 +9,6 @@ router.get('/', (req,res)=>{
   });
 });
 
-// NOTE: get user created games
-
 //Create new game with user id
 router.post('/', (req, res) => {
   req.body.user_id = req.session.currentuser._id
@@ -19,9 +17,10 @@ router.post('/', (req, res) => {
   });
 });
 
-//Update game
+//Update game comments
 router.put('/:id', (req, res) => {
-  Game.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGame) => {
+  // push new comments in to game comments
+  Game.findByIdAndUpdate(req.params.id, {$push: {comments: req.body.comments}}, {new:true}, (err, updatedGame) => {
     res.json(updatedGame)
   });
 });
