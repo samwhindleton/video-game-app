@@ -13,7 +13,8 @@ router.post('/', (req, res) => {
       req.session.currentuser = user;
       res.status(201).json({
           status:201,
-          message:'session created'
+          message: user
+          // message:'session created'
       });
     } else {
       res.status(401).json({
