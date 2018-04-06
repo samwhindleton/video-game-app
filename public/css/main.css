@@ -41,10 +41,34 @@ body {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.navbar {
+.navbar, .dropdown-menu {
  background: rgba(11, 12, 17, 0.47);
 }
 
+.dropdown-menu {
+  margin-top: 0.5rem;
+}
+
+.dropdown-divider {
+  border-color: var(--dull);
+}
+
+.dropdown-item {
+  color: var(--dull) !important;
+}
+
+.dropdown-item:hover, .nav-link:hover {
+  background: none;
+  color: var(--energy) !important;
+}
+
+.navbar-brand {
+  color: var(--energy) !important;
+}
+
+.navbar-brand:hover {
+  transform: scale(0.9);
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 header, carousel
