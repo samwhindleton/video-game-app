@@ -168,16 +168,16 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
     }).catch(error => console.error('Catch: ', error));
   };
 
-  // update game function
-  this.updateGame = (games) => {
-    console.log('updating:' + games._id);
+  // update game comment function
+  this.updateGameComment = (games) => {
+    console.log(games);
     $http({
       method: 'PUT',
       url: '/game/' + games._id,
-      data: {
-         name: games.name,
-      }
+      data: this.createForm
     }).then((response) => {
+      this.createForm = {};
+      this.getAllGames();
       console.log(response.data);
     }, error => {
       console.error(error);

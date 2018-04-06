@@ -17,7 +17,11 @@ twitter bootstrap css framework
 colors
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 :root {
-  /* --foobar: #232121; */
+  --night: #0b0c10;
+  --slate: #1f2833;
+  --dull: #c5c6c7;
+  --energy: #66fcf1;
+  --stain: #45a29e;
 }
 
 
@@ -38,7 +42,7 @@ body {
 navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .navbar {
- background: rgba(34, 33, 33, 0.55);
+ background: rgba(11, 12, 17, 0.47);
 }
 
 
@@ -70,6 +74,13 @@ header, carousel
   min-height: 100vh;
   width: 100vw;
 }
+
+.about,
+.contact,
+.session-login,
+.session-signup, {
+  height: 100vh;
+}
 /* -------------------- */
 
 
@@ -77,9 +88,7 @@ header, carousel
 signup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .session-signup {
-  background: rgb(191, 255, 196);
-  height: 100vh;
-  width: 100vw;
+  background: var(--energy);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -90,9 +99,7 @@ signup
 login
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .session-login {
-  background: rgb(191, 255, 245);
-  height: 100vh;
-  width: 100vw;
+  background: var(--energy);
   align-items: center;
   display: flex;
   justify-content: center;
@@ -103,9 +110,8 @@ login
 game view(all)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-view-all {
-  background: rgb(190, 181, 159);
-  min-height: 100vh;
-  width: 100vw;
+  background: var(--slate);
+  color: var(--dull);
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -118,8 +124,6 @@ game view(single)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-view {
   background: rgb(246, 247, 189);
-  min-height: 100vh;
-  width: 100vw;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -132,8 +136,6 @@ user profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .user-view {
   background: rgb(255, 223, 254);
-  min-height: 100vh;
-  width: 100vw;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -146,8 +148,6 @@ game add/create
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-create {
   background: rgb(140, 140, 140);
-  min-height: 100vh;
-  width: 100vw;
   align-items: center;
   display: flex;
   justify-content: center;
@@ -159,8 +159,6 @@ game edit
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-edit {
   background: rgb(193, 191, 255);
-  min-height: 100vh;
-  width: 100vw;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -172,9 +170,7 @@ game edit
 about
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .about {
-  background: rgb(251, 208, 168);
-  min-height: 100vh;
-  width: 100vw;
+  background: var(--stain);
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -200,9 +196,7 @@ about
 contact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .contact {
-  background: rgb(191, 226, 255);
-  min-height: 100vh;
-  width: 100vw;
+  background: var(--dull);
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -233,19 +227,36 @@ contact
 footer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .footer {
-  background: black;
+  background: var(--night);
   min-height: 30vh;
-  width: 100vw;
-  align-items: center;
-  display: flex;
-  justify-content: center;
   position: relative;
   bottom: 0;
 }
 
-.footer > p {
-  width: 50%;
-  color: rgb(209, 209, 209);
-  margin: 0;
-  margin: 7em;
+.social-media {
+  margin: 2em 3em 0 3em;
+}
+
+.fa-github-alt,
+.fa-steam,
+.fa-twitch,
+.fa-twitter,
+.fa-youtube {
+  color: var(--energy);
+  font-size: 3.7em;
+  /* margin: 1.3em 0 0 0; */
+  margin: 0.5em;
+}
+
+.fa-github-alt:hover,
+.fa-steam:hover,
+.fa-twitch:hover,
+.fa-twitter:hover,
+.fa-youtube:hover {
+  color: var(--stain);
+}
+
+.copy {
+  color: var(--dull);
+  margin: 5em 0 0 0;
 }
