@@ -72,9 +72,16 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       $cookies.put('wasd.it.session.user_id', this.currentUserId);
       this.loginForm = {};
       this.toggleNavbarItems();
+      // change view to profile on login success
+      this.changeInclude('user-view');
     }, (error) => {
       console.error(error);
-    }).catch((error) => console.error('Catch: ', error));
+      // on not found / incorrect, username / password,
+      // redirect to try again login page.
+      // clear username and password fields.
+      // NOTE make page, currently set to about page
+      // FIXME If username not found need to redirect, currently crashes
+    }).catch((error) => console.error('Catch: ', error), this.changeInclude('about'), this.loginForm = {});
   };
 
   // log out function
