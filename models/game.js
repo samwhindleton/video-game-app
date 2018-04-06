@@ -7,6 +7,7 @@ const gameModel = new mongoose.Schema({
     description: String,
     releaseDate: String,
     image: String,
+    comments: []
 });
 
 const Game = mongoose.model('Game', gameModel);

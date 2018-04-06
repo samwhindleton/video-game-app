@@ -27,6 +27,7 @@ app.controller('MainController', ['$http', function($http) {
   // holds data recived from log in form
   this.loginForm = {};
   this.currentUser = "";
+  this.currentUserId = "";
 
   // default value of this.showNavItem
   this.showNavItem = true;
@@ -65,6 +66,7 @@ app.controller('MainController', ['$http', function($http) {
       }
     }).then((response) => {
       this.currentUser = response.config.data.username;
+      this.currentUserId = response.data.message._id;
       this.loginForm = {};
       this.toggleNavbarItems();
     }, (error) => {
@@ -139,15 +141,22 @@ app.controller('MainController', ['$http', function($http) {
   };
 
   // user created games
-  // FIXME: find games by current session id
   this.getUserCreatedGames = () => {
-    // console.log('getting user created games');
+    console.log('getting user created games');
     $http({
       method: 'GET',
       url: '/game'
     }).then((response) => {
-      // console.table(response.data);
-      this.userCreatedGames = response.data;
+      // reset userCreatedGames to empty array
+      this.userCreatedGames = [];
+      // loop over all games
+      // find matching user id to game user_id and
+      // push to userCreatedGames
+      for (let i = 0; i < response.data.length; i++) {
+        if (response.data[i].user_id == this.currentUserId) {
+          this.userCreatedGames.push(response.data[i])
+        };
+      };
     }, error => {
       console.error(error);
     }).catch(error => console.error('Catch: ', error));
