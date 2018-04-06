@@ -5,6 +5,7 @@
       <h1>login</h1>
     </div>
     <form ng-submit="main.login()">
+      <div ng-if="main.errorMessage === true" style="color:red">Invalid username or password</div>
       <div>
         <input name="username" ng-model="main.loginForm.username" type="text" placeholder="username" required>
       </div>
