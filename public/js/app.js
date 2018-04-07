@@ -47,7 +47,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       data: this.signupForm
     }).then((response) => {
       this.signupForm = {};
-      console.log(response);
+      // console.log(response);
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
@@ -76,12 +76,15 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.changeInclude('user-view');
     }, (error) => {
       console.error(error);
+        if(error.status === 401){
+          this.errorMessage = true;
+        }
       // on not found / incorrect, username / password,
       // redirect to try again login page.
       // clear username and password fields.
       // NOTE make page, currently set to about page
       // FIXME If username not found need to redirect, currently crashes
-    }).catch((error) => console.error('Catch: ', error), this.changeInclude('about'), this.loginForm = {});
+    }).catch((error) => console.error('Catch: ', error), this.loginForm = {});
   };
 
   // log out function
@@ -102,13 +105,13 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
   };
-// ----------------------------------------
-// | /sessions                            |
-// ----------------------------------------
+  // ----------------------------------------
+  // | /sessions                            |
+  // ----------------------------------------
 
-// ----------------------------------------
-// | games                                |
-// ----------------------------------------
+  // ----------------------------------------
+  // | games                                |
+  // ----------------------------------------
   // holds data recived from log in form
   this.createForm = {};
   // holds data recived from get function

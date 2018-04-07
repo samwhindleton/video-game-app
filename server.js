@@ -31,7 +31,9 @@ app.use(session({
 const gameController = require('./controllers/game.js');
 app.use('/game', gameController);
 
-const signupController = require('./controllers/users/signup.js');
+const signupController = require('./controllers/users/signup.js');[
+
+]
 app.use('/signup', signupController);
 
 const loginController = require('./controllers/users/login.js');

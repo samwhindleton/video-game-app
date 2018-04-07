@@ -1,32 +1,37 @@
 <!-- user sign up -->
-<div class="session-signup" id="session-signup">
-  <div>
-    <div>
-      <h1>signup</h1>
-    </div>
-    <form ng-submit="main.signup()">
+<div class="session" id="session-signup">
+  <h1>signup</h1>
+  <form ng-submit="main.signup()" class="px-5 py-5">
+    <div class="form-row">
       <!-- first name -->
-      <div>
-        <input ng-model="main.signupForm.firstname" autocomplete="off" maxlength="30" minlength="2" placeholder="first name" type="text" required>
+      <div class="form-group col-md-6">
+        <label for="firstname">firstname <span class="form-asterisk">*</span></label>
+        <input ng-model="main.signupForm.firstname" class="form-control" autocomplete="off" maxlength="30" minlength="2" placeholder="firstname" type="text" required>
       </div>
       <!-- last name -->
-      <div>
-        <input ng-model="main.signupForm.lastname" autocomplete="off" maxlength="30" minlength="2" placeholder="last name" type="text" required>
+      <div class="form-group col-md-6">
+        <label for="lastname">lastname <span class="form-asterisk">*</span></label>
+        <input ng-model="main.signupForm.lastname" class="form-control" autocomplete="off" maxlength="30" minlength="2" placeholder="lastname" type="text" required>
       </div>
-      <!-- email -->
-      <div>
-        <input ng-model="main.signupForm.email" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
-      </div>
-      <!-- username -->
-      <div>
-        <input ng-model="main.signupForm.username" autocomplete="off" maxlength="30" minlength="2" placeholder="username" type="text" required>
-      </div>
-      <!-- password -->
-      <div>
-        <input ng-model="main.signupForm.password" autocomplete="off" maxlength="30" minlength="8" placeholder="password" type="password" required>
-      </div>
-      <!-- submit button -->
-      <button type="submit">submit</button>
-    </form>
-  </div>
+    </div>
+    <!-- email -->
+    <div class="form-group">
+      <label for="email">email <span class="form-asterisk">*</span></label>
+      <input ng-model="main.signupForm.email" class="form-control" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
+    </div>
+    <!-- username -->
+    <div class="form-group">
+      <label for="username">username <span class="form-asterisk">*</span></label>
+      <input ng-model="main.signupForm.username" class="form-control" autocomplete="off" maxlength="30" minlength="2" placeholder="username" type="text" required>
+    </div>
+    <!-- password -->
+    <div class="form-group">
+      <label for="password">password <span class="form-asterisk">*</span></label>
+      <input ng-model="main.signupForm.password" class="form-control" autocomplete="off" maxlength="30" minlength="8" placeholder="password" type="password" required>
+    </div>
+    <!-- signup button -->
+    <button type="submit" class="btn btn-primary">signup</button>
+  </form>
+  <!-- login button -->
+  <a ng-click="main.changeInclude('session-login')">already have an account? <span>login</span></a>
 </div> <!-- /.session-signup -->
