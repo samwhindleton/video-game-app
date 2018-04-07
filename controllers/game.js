@@ -25,7 +25,7 @@ router.put('/:id', (req, res) => {
   });
 });
 
-//Update game
+//Delete game
 router.delete('/:id', (req, res) => {
   Game.findByIdAndRemove(req.params.id, (err, deletedGame) => {
     res.json(deletedGame)
