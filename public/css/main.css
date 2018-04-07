@@ -46,6 +46,27 @@ a:hover {
   text-decoration: none;
 }
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+styles applied to multi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.about,
+.contact,
+.game-create,
+.game-edit,
+.game-view-all,
+.game-view,
+.session,
+.user-view {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.about > a, .game-create > a {
+  visibility: hidden;
+}
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -105,21 +126,6 @@ header, carousel
 }
 
 
-/* -------------------- */
-.about,
-.contact,
-.game-create,
-.game-edit,
-.game-view-all,
-.game-view,
-.session,
-.user-view {
-  min-height: 100vh;
-  width: 100vw;
-}
-/* -------------------- */
-
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 session (login / signup)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -140,8 +146,11 @@ session (login / signup)
   color: var(--white-tee);
 }
 
-.session > a {
-  margin: 2em 0;
+.session > a, .about > a {
+  /* margin: 2em 0; */
+  max-width: 480px;
+  margin: 2em 0 5em;
+  padding: 0 1em;
 }
 
 .session > a > span {
@@ -232,10 +241,7 @@ user profile
 game add/create
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-create {
-  background: rgb(140, 140, 140);
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  background: var(--white-tee);
 }
 
 
@@ -259,6 +265,7 @@ about
   color: var(--night);
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -266,9 +273,9 @@ about
   margin: 2em 0 0.7em 0;
 }
 
-div.about-p.row.align-items-center {
+/* div.about-p.row.align-items-center {
   padding-bottom: 100px;
-}
+} */
 
 .about-p > .col-md-6 {
   background: var(--night);
@@ -284,7 +291,9 @@ div.about-p.row.align-items-center {
 contact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .contact > small.text-muted {
-  margin: 2em 5em 5em 5em;
+  max-width: 480px;
+  margin: 2em 0 5em;
+  padding: 0 1em;
 }
 
 .contact-span-send {
