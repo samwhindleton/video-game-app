@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 //Update game comments
 router.put('/:id', (req, res) => {
   // push new comments in to game comments
-  Game.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGame) => {
+  Game.findByIdAndUpdate(req.params.id, {set: req.body}, {new:true}, (err, updatedGame) => {
     res.json(updatedGame)
   });
 });
