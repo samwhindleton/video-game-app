@@ -12,6 +12,7 @@
     </div>
     <!-- username -->
     <div class="form-group">
+      <div ng-if="main.errorMessage === true" class="session-error">invalid username or password. please try again.</div>
       <label for="username">username</label>
       <input ng-model="main.loginForm.username" autocomplete="off" class="form-control" id="username" name="username" placeholder="username" type="text" required>
     </div>

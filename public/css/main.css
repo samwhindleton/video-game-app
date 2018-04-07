@@ -148,6 +148,10 @@ session (login / signup)
   text-decoration: underline;
 }
 
+.session-error {
+  color: #ff0000;
+}
+
 .login-hidden-row {
   visibility: hidden;
 }
