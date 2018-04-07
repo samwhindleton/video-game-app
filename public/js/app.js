@@ -50,6 +50,9 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // console.log(response);
     }, (error) => {
       console.error(error);
+      if(error.status === 401){
+        this.errorMessage = true;
+      }
     }).catch((error) => console.error('Catch: ', error));
   };
 

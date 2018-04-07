@@ -11,7 +11,7 @@ router.get('/', (req,res)=>{
 
 //Create new game with user id
 router.post('/', (req, res) => {
-  req.body.user_id = req.session.currentuser._id
+  req.body.user_id = req.session.currentuser._id;
   Game.create(req.body, (err, newGame) => {
     res.json(newGame)
   });
