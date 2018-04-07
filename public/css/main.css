@@ -46,6 +46,27 @@ a:hover {
   text-decoration: none;
 }
 
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+styles applied to multi
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.about,
+.contact,
+.game-create,
+.game-edit,
+.game-view-all,
+.game-view,
+.session,
+.user-view {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.about > a, .game-create > a {
+  visibility: hidden;
+}
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -105,21 +126,6 @@ header, carousel
 }
 
 
-/* -------------------- */
-.about,
-.contact,
-.game-create,
-.game-edit,
-.game-view-all,
-.game-view,
-.session,
-.user-view {
-  min-height: 100vh;
-  width: 100vw;
-}
-/* -------------------- */
-
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 session (login / signup)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -140,8 +146,11 @@ session (login / signup)
   color: var(--white-tee);
 }
 
-.session > a {
-  margin: 2em 0;
+.session > a, .about > a {
+  /* margin: 2em 0; */
+  max-width: 480px;
+  margin: 2em 0 5em;
+  padding: 0 1em;
 }
 
 .session > a > span {
@@ -155,6 +164,10 @@ session (login / signup)
 .login-hidden-row {
   visibility: hidden;
 }
+
+
+/* all form button style
+---------------------------------------- */
 
 .btn {
   color: var(--night);
@@ -190,6 +203,7 @@ button.btn.btn-primary:hover {
   background: var(--stain);
   border-color: var(--stain);
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game view(all)
@@ -232,10 +246,7 @@ user profile
 game add/create
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .game-create {
-  background: rgb(140, 140, 140);
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  background: var(--white-tee);
 }
 
 
@@ -259,6 +270,7 @@ about
   color: var(--night);
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -266,9 +278,9 @@ about
   margin: 2em 0 0.7em 0;
 }
 
-div.about-p.row.align-items-center {
+/* div.about-p.row.align-items-center {
   padding-bottom: 100px;
-}
+} */
 
 .about-p > .col-md-6 {
   background: var(--night);
@@ -284,7 +296,9 @@ div.about-p.row.align-items-center {
 contact
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .contact > small.text-muted {
-  margin: 2em 5em 5em 5em;
+  max-width: 480px;
+  margin: 2em 0 5em;
+  padding: 0 1em;
 }
 
 .contact-span-send {
@@ -306,14 +320,32 @@ footer
 .footer {
   background: var(--night);
   min-height: 30vh;
+  padding-top: 5em;
   /* position: relative; */
   /* bottom: 0; */
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.social-media {
-  margin: 2em 3em 0 3em;
+.footer > .container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
+.footer > div > div {
+  max-width: 700px;
+}
+
+.footer div.col-sm.col-sm-2, .footer div.col-sm.col-sm-1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.fa-envelope,
 .fa-github-alt,
 .fa-steam,
 .fa-twitch,
@@ -323,13 +355,14 @@ footer
   cursor: pointer;
   font-size: 3.7em;
   /* margin: 1.3em 0 0 0; */
-  margin: 0.5em;
+  margin-bottom: 0.5em;
   -moz-transition-duration: 800ms;
   -o-transition-duration: 800ms;
   -webkit-transition-duration: 800ms;
   transition-duration-duration: 800ms;
 }
 
+.fa-envelope:hover,
 .fa-github-alt:hover,
 .fa-steam:hover,
 .fa-twitch:hover,
@@ -349,13 +382,9 @@ footer
 
 .copy {
   color: var(--white-tee);
-  margin: 5em 0 0 0;
+  margin: 3em 0.7em 2em;
 }
 
-.copy > p > a {
+.copy > a {
   color: var(--energy);
-}
-
-.copy > p > a:hover {
-  text-decoration: none;
 }
