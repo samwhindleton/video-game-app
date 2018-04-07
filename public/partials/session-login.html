@@ -1,22 +1,37 @@
 <!-- user log in section -->
-<div class="session-login" id="session-login">
-  <div>
-    <div>
-      <h1>login</h1>
-    </div>
-    <form ng-submit="main.login()">
-      <div ng-if="main.errorMessage === true" style="color:red">Invalid username or password</div>
-      <div>
-        <input name="username" ng-model="main.loginForm.username" type="text" placeholder="username" required>
+<div class="session" id="session-login">
+  <h1>login</h1>
+  <form ng-submit="main.login()" class="px-5 py-5">
+    <div class="form-row login-hidden-row">
+      <div class="form-group col-md-6">
+        <input class="form-control">
       </div>
-      <div>
-        <input name="password" ng-model="main.loginForm.password" type="password" placeholder="password" required>
+      <div class="form-group col-md-6">
+        <input class="form-control">
       </div>
-      <button type="submit" class="btn btn-primary">login</button>
-    </form>
-
-    <div ng-if="main.currentUser">
-      Welcome: {{main.currentUser}}!
     </div>
-  </div>
-</div> <!-- /.session-login -->
+    <!-- username -->
+    <div class="form-group">
+      <div ng-if="main.errorMessage === true" class="session-error">invalid username or password. please try again.</div>
+      <label for="username">username</label>
+      <input ng-model="main.loginForm.username" autocomplete="off" class="form-control" id="username" name="username" placeholder="username" type="text" required>
+    </div>
+    <!-- password -->
+    <div class="form-group">
+      <label for="password">password</label>
+      <input ng-model="main.loginForm.password" class="form-control" id="password" name="password" placeholder="password" type="password" required>
+    </div>
+    <!-- login button -->
+    <button type="submit" class="btn btn-primary">login</button>
+    <div class="form-row login-hidden-row">
+      <div class="form-group col-md-6">
+        <input class="form-control">
+      </div>
+      <div class="form-group col-md-6">
+        <input class="form-control">
+      </div>
+    </div>
+  </form>
+  <!-- signup button -->
+  <a ng-click="main.changeInclude('session-signup')">new to wasd.it? <span>signup</span></a>
+</div>  <!-- /.session-login -->
