@@ -207,6 +207,9 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.getAllGames();
       this.getUserCreatedGames();
     }, (error) => {
+      if(error.status === 401){
+        this.errorMessage = true;
+      }
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
   };
