@@ -257,6 +257,9 @@ about
 .about {
   background: var(--white-tee);
   color: var(--night);
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .about > .container > .row > h1 {
