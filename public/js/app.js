@@ -75,7 +75,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // change view to profile on login success
       this.changeInclude('user-view');
     }, (error) => {
-<<<<<<< HEAD
+
         console.error(error);
         if(error.status === 401){
           this.errorMessage = true;
@@ -85,12 +85,12 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // clear username and password fields.
       // NOTE make page, currently set to about page
       // FIXME If username not found need to redirect, currently crashes
-=======
+
       console.error(error);
       if(error.status === 401){
         this.errorMessage = true;
       };
->>>>>>> 8ef742586164a5d8be38d73f085241d39b99aa32
+//>>>>>>> 8ef742586164a5d8be38d73f085241d39b99aa32
     }).catch((error) => console.error('Catch: ', error), this.loginForm = {});
   };
 
