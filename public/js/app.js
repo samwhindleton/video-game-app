@@ -75,7 +75,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // change view to profile on login success
       this.changeInclude('user-view');
     }, (error) => {
-      console.error(error);
+        console.error(error);
         if(error.status === 401){
           this.errorMessage = true;
         }
