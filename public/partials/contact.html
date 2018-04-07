@@ -1,26 +1,50 @@
 <!-- contact -->
-<div class="contact" id="contact">
-  <div>
-    <h1>contact</h1>
-    <p>test contact form</p>
-  </div>
-  <form>
-    <!-- first name -->
-    <div>
-      <input ng-model="main.signupForm.firstname" autocomplete="off" maxlength="30" minlength="2" placeholder="first name" type="text" required>
-    </div>
-    <!-- last name -->
-    <div>
-      <input ng-model="main.signupForm.lastname" autocomplete="off" maxlength="30" minlength="2" placeholder="last name" type="text" required>
+<div class="contact session" id="contact">
+  <h1>contact us</h1>
+  <form ng-submit="main.signup()" class="px-5 py-5">
+    <div class="form-row">
+      <!-- first name -->
+      <div class="form-group col-md-6">
+        <label for="firstname">firstname <span class="form-asterisk">*</span></label>
+        <input class="form-control" autocomplete="off" maxlength="30" minlength="2" placeholder="firstname" type="text" required>
+      </div>
+      <!-- last name -->
+      <div class="form-group col-md-6">
+        <label for="lastname">lastname <span class="form-asterisk">*</span></label>
+        <input class="form-control" autocomplete="off" maxlength="30" minlength="2" placeholder="lastname" type="text" required>
+      </div>
     </div>
     <!-- email -->
-    <div>
-      <input ng-model="main.signupForm.email" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
+    <div class="form-group">
+      <label for="email">email <span class="form-asterisk">*</span></label>
+      <input class="form-control" autocomplete="off" maxlength="50" minlength="5" placeholder="email address" type="email" required>
+    </div>
+    <!-- subject -->
+    <div class="form-group">
+      <label for="subject">subject <span class="form-asterisk">*</span></label>
+      <input class="form-control" autocomplete="off" maxlength="50" minlength="5" placeholder="[Company_name] job offer / Job offer from [Company_name]" type="text" required>
     </div>
     <!-- message -->
-    <div>
-      <textarea rows="8" cols="80"></textarea>
+    <div  class="form-group">
+      <label for="message">message <span class="form-asterisk">*</span></label>
+      <textarea class="form-control" autocomplete="off" maxlength="5000" minlength="20" rows="8" cols="44" placeholder="Dear [Candidate_name],
+We’re delighted to extend this offer of employment for the position of [Job_title] with [Company_name]. Please review this summary of terms and conditions for your anticipated employment with us.
+
+If you accept this offer, your start date will be [Start Date] or another mutually agreed upon date, and you would report to [Manager_name].
+
+Please find attached the terms and conditions of your employment, should you accept this offer letter. We would like to have your response by [date]. In the meantime, please feel free to contact me or [Manager_name] via email or phone at [provide contact details], if you have any questions.
+
+We are all looking forward to having you on our team.
+
+Best regards,
+
+[Your name]
+[Signature]"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary">contact</button>
+    <button type="submit" class="btn btn-primary">send message</button>
   </form>
+  <!-- help text -->
+  <small class="form-text text-muted">
+    This is a dummy contact forum. Your information  will NOT be submitted. We don't mind you clicking the <span class="contact-span-send">send message</span> button to your heart's content, but we would love for you to fork us on <span class="contact-span-github"><a href="https://github.com/samwhindleton/video-game-app" target="_blank">Github</a></span> when your done.
+  </small>
 </div> <!-- /.contact -->

@@ -47,7 +47,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       data: this.signupForm
     }).then((response) => {
       this.signupForm = {};
-      console.log(response);
+      // console.log(response);
     }, (error) => {
       console.error(error);
     }).catch((error) => console.error('Catch: ', error));
