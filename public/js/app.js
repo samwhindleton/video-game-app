@@ -75,6 +75,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // change view to profile on login success
       this.changeInclude('user-view');
     }, (error) => {
+<<<<<<< HEAD
         console.error(error);
         if(error.status === 401){
           this.errorMessage = true;
@@ -84,6 +85,12 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       // clear username and password fields.
       // NOTE make page, currently set to about page
       // FIXME If username not found need to redirect, currently crashes
+=======
+      console.error(error);
+      if(error.status === 401){
+        this.errorMessage = true;
+      };
+>>>>>>> 8ef742586164a5d8be38d73f085241d39b99aa32
     }).catch((error) => console.error('Catch: ', error), this.loginForm = {});
   };
 
@@ -122,18 +129,78 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
   this.indexOfShow = null;
   // edit index show/hide
   this.indexOfEditToShow = null;
-
+  // game genres to select from on create form
+  $scope.gameGenreSelection = {
+    genre: [
+      "4X",
+      "Action-adventure",
+      "ActionRPG",
+      "Artillery",
+      "Beat'em Up",
+      "Board",
+      "Card",
+      "Casual",
+      "Choices",
+      "Competitive",
+      "Construction and Management Simulation",
+      "Fantasy",
+      "Fighting",
+      "First-Person Party-Based RPG",
+      "Grand Strategy War",
+      "Graphic Adventures",
+      "Idle Gaming",
+      "Interactive Movie",
+      "Life Simulation",
+      "Logic",
+      "Metroidvania",
+      "MMO",
+      "MMORPG",
+      "Multi-Player Online Battle Arena (MOBA)",
+      "Party",
+      "Platform",
+      "Programming",
+      "Racing",
+      "Real-Time 3D Adventures",
+      "Real-Time Strategy (RTS)",
+      "Real-Time Tactics (RTT)",
+      "Roguelikes",
+      "Rhythm",
+      "Sandbox RPG",
+      "Scientific Study",
+      "Shooter",
+      "Sports",
+      "Sports-Based Fighting",
+      "Stealth",
+      "Survival",
+      "Survival Horror",
+      "Tactical RPG",
+      "Text Adventures",
+      "Tower Defense",
+      "Trivia",
+      "Turn-Based Strategy (TBS)",
+      "Turn-Based Tactics (TBT)",
+      "Vehicle Simulation",
+      "Visual Novel",
+      "War"
+    ]
+  };
+  //
+  this.createFormGenreSeleted = "4X";
   // add/create game function
   this.create = () => {
     // NOTE: remove log on project complete
     console.log('adding game');
+    this.createForm.genre = this.createFormGenreSeleted;
     $http({
       method: 'POST',
       url: '/game',
       data: this.createForm
     }).then((response) => {
+      // reset these info
       this.createForm = {};
+      this.createFormGenreSeleted
       console.log(response);
+      // run these commands
       this.getAllGames();
       this.getUserCreatedGames();
     }, (error) => {

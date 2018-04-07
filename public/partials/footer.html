@@ -1,21 +1,51 @@
 <!-- footer -->
-<div class="footer container-fluid d-flex flex-column justify-content-center" id="footer">
-  <!-- class="footer" -->
-  <div class="social-media d-flex flex-wrap justify-content-center">
-    <i class="fab fa-github-alt"></i>
-    <i class="fab fa-steam"></i>
-    <i class="fab fa-twitch"></i>
-    <i class="fab fa-twitter"></i>
-    <i class="fab fa-youtube"></i>
+<div class="footer" id="footer">
+  <div class="container">
+    <div class="row">
+      <!-- github -->
+      <div class="col-sm col-sm-2">
+        <a href="https://github.com/samwhindleton/video-game-app" target="_blank">
+          <i class="fab fa-github-alt"></i>
+        </a>
+      </div>
+      <!-- steam -->
+      <div class="col-sm col-sm-2">
+        <a href="http://store.steampowered.com/" target="_blank">
+          <i class="fab fa-steam"></i>
+        </a>
+      </div>
+      <!-- twitch -->
+      <div class="col-sm col-sm-2">
+        <a href="https://twitch.tv/" target="_blank">
+          <i class="fab fa-twitch"></i>
+        </a>
+      </div>
+      <!-- twitter -->
+      <div class="col-sm col-sm-2">
+        <a href="https://twitter.com/" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </div>
+      <!-- youtube -->
+      <div class="col-sm col-sm-2">
+        <a href="https://www.youtube.com/" target="_blank">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <!-- email -->
+      <div class="col-sm col-sm-2">
+        <a ng-click="main.changeInclude('contact')">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </div>
   </div>
-  <div class="copy d-flex justify-content-center">
-    <p>
-      &copy;
-      <!-- display current year -->
-      <script>
-        new Date().getFullYear()>=2018&&document.write(new Date().getFullYear());
-      </script>
-      <a href="https://github.com/samwhindleton/video-game-app" target="_blank">WASD</a>. all rights reserved.
-    </p>
-  </div>
+  <p class="copy">
+    &copy;
+    <!-- display current year -->
+    <script>
+      new Date().getFullYear()>=2018&&document.write(new Date().getFullYear());
+    </script>
+    <a href="https://github.com/samwhindleton/video-game-app" target="_blank">WASD</a>. all rights reserved.
+  </p>
 </div> <!-- /.footer -->
