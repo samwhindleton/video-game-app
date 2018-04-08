@@ -9,19 +9,38 @@ router.get('/', (req,res)=>{
   });
 });
 
-//Create new game with user id
+// //Create new game with user id
+// router.post('/', (req, res) => {
+//   req.body.user_id = req.session.currentuser._id;
+//   Game.create(req.body, (err, newGame) => {
+//     if(err.code === 11000){
+//         res.status(401).json({
+//              status:401,
+//              message: "duplicate game"
+//         });
+//     }else{
+//       res.json(newGame)
+//     }
+//
+//   });
+// });
+
+// Create new game with user id
 router.post('/', (req, res) => {
   req.body.user_id = req.session.currentuser._id;
-  Game.create(req.body, (err, newGame) => {
-    if(err.code === 11000){
-        res.status(401).json({
-             status:401,
-             message: "duplicate game"
-        });
-    }else{
-      res.json(newGame)
-    }
-
+  Game.findOne({
+    title: req.body.title
+  }, (error, foundGame) => {
+    if (foundGame) {
+      res.status(401).json({
+        status:401,
+        message: "duplicate game"
+      });
+    } else {
+      Game.create(req.body, (error, newGame) => {
+        res.json(newGame)
+      });
+    };
   });
 });
 
