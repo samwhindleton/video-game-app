@@ -1,45 +1,50 @@
-<!-- game view(single) / comment / like section -->
-<div class="game-view" id="game-view">
+<!-- game view(all) section -->
+<div class="game-view-all" id="game-view-all">
   <div>
-    <h1>game view(single)</h1>
+    <h1>game view(all)</h1>
   </div>
-  <!-- title -->
-  <div>
-    <h1>game title here</h1>
-  </div>
-  <!-- username -->
-  <div>
-    <h4>added by</h4>
-    <p>username</p>
-  </div>
-  <!-- release date -->
-  <div>
-    <p>game release date</p>
-  </div>
-  <!-- genre -->
-  <div>
-    <p>game genre</p>
-  </div>
-  <!-- image -->
-  <div>
-    <p>game image</p>
-  </div>
-  <!-- description -->
-  <div>
-    <p>game description</p>
-  </div>
-  <!-- user added comments -->
-  <div>
-    <p>user added comments 1</p>
-    <p>user added comments 2</p>
-    <p>user added comments 3</p>
-  </div>
-  <form ng-submit="main.comment()">
-    <!-- comments -->
-    <div>
-      <textarea rows="8" cols="80"></textarea>
-    </div>
-    <!-- submit button -->
-    <button type="submit">submit</button>
-  </form>
-</div> <!-- /.game-view -->
+  <!-- all gamess -->
+  <ul>
+    <li ng-repeat="games in main.allGames">
+      <div ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">
+        {{games.title}}
+      </div>
+      <!-- view/show section
+      hidden until view button is clicked -->
+      <div>
+        <!-- view/show form -->
+        <div ng-if="$index === main.indexOfShow">
+          <!-- title -->
+          <p>game title: {{games.title}}</p>
+          <!-- release date -->
+          <p>release year: {{games.releaseYear}}</p>
+          <!-- genre -->
+          <p>genre: {{games.genre}}</p>
+          <!-- image -->
+          <img ng-src="{{games.image}}" alt="image of {{games.name}}">
+          <!-- description -->
+          <p>description: {{games.description}}</p>
+          <!-- display comments -->
+          <p>comments:
+            <ul>
+              <li ng-repeat="comments in games.comments track by $index">{{comments}}</li>
+            </ul>
+          </p>
+
+          <!-- if there is a signed in user, show add comment form -->
+          <div ng-if="main.currentUser">
+            <form ng-submit="main.updateGameComment(games)">
+              <input name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
+              <textarea ng-model="main.createForm.comments" type="text" placeholder="add new comment" required></textarea>
+              <!-- submit button -->
+              <button type="submit">submit</button>
+            </form>
+          </div>
+          <!-- close/collapse button
+          closes view/show container when selected -->
+          <button ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">close</button>
+        </div>
+      </div> <!-- end of view/show section -->
+    </li>
+  </ul>
+</div> <!-- /.game-view-all -->

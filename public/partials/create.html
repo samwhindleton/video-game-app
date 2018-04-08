@@ -14,10 +14,10 @@
       <input ng-model="main.createForm.title" class="form-control" autocomplete="off" maxlength="50" minlength="2" placeholder="game title" type="text" required>
     </div>
     <div class="form-row">
-      <!-- release date -->
+      <!-- release year -->
       <div class="form-group col-md-6">
-        <label for="release date">release date <span class="form-asterisk">*</span></label>
-        <input ng-model="main.createForm.releaseDate" class="form-control" autocomplete="off" placeholder="release date" type="date" required>
+        <label for="release year">release year <span class="form-asterisk">*</span></label>
+        <input ng-model="main.createForm.releaseYear" class="form-control" autocomplete="off" min="1958" max="2025" step="1" placeholder="2018" type="number" required>
       </div>
       <!-- genre -->
       <div class="form-group col-md-6">
