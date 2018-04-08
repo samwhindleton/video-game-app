@@ -1,0 +1,107 @@
+<!-- user view -->
+<div class="user-view" id="user-view">
+  <div>
+    <h1>user profile page</h1>
+  </div>
+  <!-- user added/created games -->
+  <ul>
+    <li ng-repeat="games in main.userCreatedGames">
+      <span ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">{{games.title}}</span>
+      <span>
+        <a ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">
+          <i class="fas fa-eye"></i>
+        </a>
+        <!-- edit button
+        when clicked, only show edit view of selected game -->
+        <a ng-click="(main.indexOfEditFormToShow === $index) ? main.indexOfEditFormToShow = null : main.indexOfEditFormToShow = $index">
+          <i class="fas fa-edit"></i>
+        </a>
+        <!-- delete button -->
+        <a ng-click="main.deleteUserCreatedGame(games._id)">
+          <i class="fas fa-trash-alt"></i>
+        </a>
+      </span>
+
+      <!-- game edit -->
+      <div ng-if="$index === main.indexOfEditFormToShow" class="game-create session" id="game-create">
+        <h1>edit game</h1>
+        <form ng-submit="main.updateEditGame(games)" class="px-5 py-5">
+          <!-- username -->
+          <div class="form-group">
+            <div ng-if="main.successMessage === true" class="edit-success">successfully updated game {{games.title}}.</div>
+            <label for="username">username</label>
+            <input ng-model="main.currentUser" class="form-control" name="username" readonly>
+          </div>
+          <!-- game title -->
+          <div class="form-group">
+            <label for="game title">game title</label>
+            <input ng-model="games.title" class="form-control" autocomplete="off" maxlength="50" minlength="2" type="text" required>
+          </div>
+          <div class="form-row">
+            <!-- release date -->
+            <div class="form-group col-md-6">
+              <label for="release year">release year</label>
+              <input ng-model="games.releaseYear" class="form-control" autocomplete="off" min="1958" max="2025" step="1" type="number" required>
+            </div>
+            <!-- genre -->
+            <div class="form-group col-md-6">
+              <label for="genre">genre</span></label>
+              <div class="input-group mb-3">
+                <select ng-model="games.genre" ng-options="i for i in gameGenreSelection.genre" class="custom-select" required></select>
+              </div>
+            </div>
+          </div>
+          <!-- image -->
+          <div class="form-group">
+            <label for="image url">image url</span></label>
+            <input ng-model="games.image" class="form-control" autocomplete="off" maxlength="500" minlength="5" type="url" required>
+          </div>
+          <!-- description -->
+          <div class="form-group">
+            <label for="description">description</label>
+            <textarea ng-model="games.description" class="form-control" autocomplete="off" maxlength="5000" minlength="20" rows="8" cols="44" type="text" required></textarea>
+          </div>
+          <!-- edit button -->
+          <button type="submit" class="btn btn-primary">edit</button>
+        </form>
+        <a>hello, world!</a>
+      </div> <!-- /.game-edit -->
+      <!-- view/show section
+      hidden until view button is clicked -->
+      <div>
+        <!-- view/show form -->
+        <div ng-if="$index === main.indexOfShow">
+          <!-- title -->
+          <p>game title: {{games.title}}</p>
+          <!-- release date -->
+          <p>release year: {{games.releaseYear}}</p>
+          <!-- genre -->
+          <p>genre: {{games.genre}}</p>
+          <!-- image -->
+          <img ng-src="{{games.image}}" alt="image of {{games.name}}">
+          <!-- description -->
+          <p>description: {{games.description}}</p>
+          <!-- display comments -->
+          <p>comments:
+            <ul>
+              <li ng-repeat="comments in games.comments track by $index">{{comments}}</li>
+            </ul>
+          </p>
+
+          <!-- if there is a signed in user, show add comment form -->
+          <div ng-if="main.currentUser">
+            <form ng-submit="main.updateGameComment(games)">
+              <input name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
+              <textarea ng-model="main.createForm.comments" type="text" placeholder="add new comment" required></textarea>
+              <!-- submit button -->
+              <button type="submit">submit</button>
+            </form>
+          </div>
+          <!-- close/collapse button
+          closes view/show container when selected -->
+          <button ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">close</button>
+        </div>
+      </div> <!-- end of view/show section -->
+    </li>
+  </ul>
+</div> <!-- /.user-view -->

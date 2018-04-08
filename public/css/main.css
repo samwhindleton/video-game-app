@@ -46,6 +46,9 @@ a:hover {
   text-decoration: none;
 }
 
+textarea {
+  min-height: 200px;
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 styles applied to multi
@@ -159,6 +162,8 @@ session (login / signup)
 
 .session-error {
   color: #ff0000;
+  margin-bottom: 0.5em;
+  text-align: center;
 }
 
 .login-hidden-row {
@@ -170,11 +175,11 @@ session (login / signup)
 ---------------------------------------- */
 
 .btn {
-  color: var(--night);
+  color: var(--white-tee);
 }
 
 .btn:hover {
-  color: var(--white-tee);
+  color: var(--night);
 }
 
 .btn-primary.focus, .btn-primary:focus {
@@ -182,26 +187,42 @@ session (login / signup)
 }
 
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active {
-  color: var(--white-tee);
-  background-color: var(--stain);
-  border-color: var(--stain);
+  color: var(--night);
+  background-color: var(--energy);
+  border-color: var(--energy);
 }
 
 button.btn.btn-primary {
   width: 100%;
-  background: var(--energy);
-  border-color: var(--energy);
+  background: var(--stain);
+  border-color: var(--stain);
   margin-top: 0.5em;
+  /* horizontal | vertical | blur | optional spread | color */
+  -webkit-box-shadow: 0 3px 4px 1px var(--energy);
+  -moz-box-shadow: 0 3px 4px 1px var(--energy);
+  box-shadow: 0 3px 4px 1px var(--energy);
+  -moz-transition-duration: 800ms;
+  -o-transition-duration: 800ms;
+  -webkit-transition-duration: 800ms;
+  transition-duration: 800ms;
 }
 
 button.btn.btn-primary:active {
-  background: var(--energy);
-  border-color: var(--energy);
+  /* background: var(--stain) !important;
+  border-color: var(--stain) !important; */
+  transform: translate(0, 2px);
 }
 
 button.btn.btn-primary:hover {
-  background: var(--stain);
-  border-color: var(--stain);
+  background: var(--energy);
+  border-color: var(--energy);
+  -webkit-box-shadow: 1px 3px 3px 1px var(--stain);
+  -moz-box-shadow: 1px 3px 3px 1px var(--stain);
+  box-shadow: 1px 3px 3px 1px var(--stain);
+  -moz-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
 }
 
 
@@ -259,6 +280,10 @@ game edit
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.edit-success {
+  color: var(--energy);
 }
 
 
@@ -351,15 +376,15 @@ footer
 .fa-twitch,
 .fa-twitter,
 .fa-youtube {
-  color: var(--energy);
+  color: var(--white-tee);
   cursor: pointer;
   font-size: 3.7em;
   /* margin: 1.3em 0 0 0; */
   margin-bottom: 0.5em;
-  -moz-transition-duration: 800ms;
-  -o-transition-duration: 800ms;
-  -webkit-transition-duration: 800ms;
-  transition-duration-duration: 800ms;
+  -moz-transition-duration: 1200ms;
+  -o-transition-duration: 1200ms;
+  -webkit-transition-duration: 1200ms;
+  transition-duration-duration: 1200ms;
 }
 
 .fa-envelope:hover,
@@ -368,7 +393,7 @@ footer
 .fa-twitch:hover,
 .fa-twitter:hover,
 .fa-youtube:hover {
-  color: var(--stain);
+  color: var(--energy);
   -moz-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);

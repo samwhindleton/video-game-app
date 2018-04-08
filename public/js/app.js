@@ -47,6 +47,8 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       data: this.signupForm
     }).then((response) => {
       this.signupForm = {};
+      this.errorMessage = false;
+      this.changeInclude('login');
       // console.log(response);
     }, (error) => {
       console.error(error);
@@ -75,25 +77,15 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       $cookies.put('wasd.it.session.user_id', this.currentUserId);
       this.loginForm = {};
       this.toggleNavbarItems();
+      this.getUserCreatedGames();
+      this.errorMessage = false;
       // change view to profile on login success
-      this.changeInclude('user-view');
+      this.changeInclude('profile');
     }, (error) => {
-
-        console.error(error);
-        if(error.status === 401){
-          this.errorMessage = true;
-        }
-      // on not found / incorrect, username / password,
-      // redirect to try again login page.
-      // clear username and password fields.
-      // NOTE make page, currently set to about page
-      // FIXME If username not found need to redirect, currently crashes
-
       console.error(error);
-      if(error.status === 401){
+      if(error.status === 401) {
         this.errorMessage = true;
       };
-//>>>>>>> 8ef742586164a5d8be38d73f085241d39b99aa32
     }).catch((error) => console.error('Catch: ', error), this.loginForm = {});
   };
 
@@ -203,6 +195,11 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.createForm = {};
       this.createFormGenreSeleted
       console.log(response);
+      this.errorMessage = false;
+      if (this.indexOfEditFormToShow != null) {
+        this.indexOfEditFormToShow = null;
+      };
+      this.changeInclude('profile');
       // run these commands
       this.getAllGames();
       this.getUserCreatedGames();
@@ -267,6 +264,35 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
     }).catch(error => console.error('Catch: ', error));
   };
 
+  // edit index show/hide
+  this.indexOfEditFormToShow = null;
+  // update edit game function
+  this.updateEditGame = (games) => {
+    console.log("editing game");
+    console.log(games);
+    $http({
+      method: 'PUT',
+      url: '/profile/' + games._id,
+      data: {
+         title: games.title,
+         genre: games.genre,
+         description: games.description,
+         releaseYear: games.releaseYear,
+         image: games.image,
+      }
+    }).then((response) => {
+      this.createForm = {};
+      this.getUserCreatedGames();
+      this.getAllGames();
+      if(response.status === 201){
+        this.successMessage = true;
+      }
+      console.log(response.data);
+    }, error => {
+      console.error(error);
+    }).catch(error => console.error('Catch: ', error));
+  };
+
   // delete function
   this.deleteUserCreatedGame = (id) => {
     $http({
@@ -281,6 +307,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       console.error(error);
     }).catch(error => console.error('Catch: ', error));
   };
+
 // ----------------------------------------
 // | /games                               |
 // ----------------------------------------
@@ -299,8 +326,9 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.showNavItem = false;
     } else {
       this.showNavItem = true;
-    }
+    };
   };
+
 // ----------------------------------------
 // | /cookies                             |
 // ----------------------------------------

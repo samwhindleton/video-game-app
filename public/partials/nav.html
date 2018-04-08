@@ -10,7 +10,7 @@
         <a ng-click="main.changeInclude('header')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">home</a>
       </li>
       <li class="nav-item">
-        <a ng-click="main.changeInclude('game-view-all')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">games</a>
+        <a ng-click="main.changeInclude('game-view')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">games</a>
       </li>
       <li class="nav-item">
         <a ng-click="main.changeInclude('about')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">about</a>
@@ -26,18 +26,18 @@
           {{main.currentUser}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a ng-click="main.changeInclude('user-view'); main.getUserCreatedGames()" class="dropdown-item nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">profile</a>
-              <a ng-click="main.changeInclude('game-create')" class="dropdown-item nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">add game</a>
+              <a ng-click="main.changeInclude('profile'); main.getUserCreatedGames()" class="dropdown-item nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">profile</a>
+              <a ng-click="main.changeInclude('create')" class="dropdown-item nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">add game</a>
             <div class="dropdown-divider"></div>
               <a ng-click="main.changeInclude('header'); main.logout()" class="dropdown-item nav-item nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">logout</a>
         </div>
       </li>
       <!-- signup / login -->
       <li ng-if="main.showNavItem" class="nav-item">
-        <a ng-click="main.changeInclude('session-signup')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">signup</a>
+        <a ng-click="main.changeInclude('signup')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">signup</a>
       </li>
       <li ng-if="main.showNavItem" class="nav-item">
-        <a ng-click="main.changeInclude('session-login')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">login</a>
+        <a ng-click="main.changeInclude('login')" class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show">login</a>
       </li>
     </ul>
   </div>
