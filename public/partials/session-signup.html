@@ -2,6 +2,7 @@
 <div class="session" id="session-signup">
   <h1>signup</h1>
   <form ng-submit="main.signup()" class="px-5 py-5">
+    <div ng-if="main.errorMessage === true" class="session-error">That username already exists.</div>
     <div class="form-row">
       <!-- first name -->
       <div class="form-group col-md-6">
