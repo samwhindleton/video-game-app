@@ -22,7 +22,7 @@ router.put('/:id', (req,res)=>{
   Game.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGame)=>{
     res.status(201).json({
       status:201,
-      message: "user created"
+      message: "game updated"
     });
     // res.json(updatedGame);
   });
