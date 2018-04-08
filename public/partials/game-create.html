@@ -2,6 +2,7 @@
 <div class="game-create session" id="game-create">
   <h1>add game</h1>
   <form ng-submit="main.create()" class="px-5 py-5">
+    <div ng-if="main.errorMessage === true" class="session-error">That game already exists.</div>
     <!-- username -->
     <div class="form-group">
       <label for="username">username</label>
