@@ -10,11 +10,21 @@ router.get('/', (req, res) => {
   }
 });
 
-//Update game comments
-router.put('/:id', (req, res) => {
-  // push new comments in to game comments
-  Game.findByIdAndUpdate(req.params.id, {set: req.body}, {new:true}, (err, updatedGame) => {
-    res.json(updatedGame)
+// //Update game comments
+// router.put('/:id', (req, res) => {
+//   // push new comments in to game comments
+//   Game.findByIdAndUpdate(req.params.id, {set: req.body}, {new:true}, (err, updatedGame) => {
+//     res.json(updatedGame)
+//   });
+// });
+
+router.put('/:id', (req,res)=>{
+  Game.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedGame)=>{
+    res.status(201).json({
+      status:201,
+      message: "user created"
+    });
+    // res.json(updatedGame);
   });
 });
 
