@@ -5,7 +5,7 @@ const gameModel = new mongoose.Schema({
     title: { type: String, unique: true },
     genre: String,
     description: String,
-    releaseDate: String,
+    releaseYear: Number,
     image: String,
     comments: []
 });
