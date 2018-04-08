@@ -1,6 +1,9 @@
 // on document ready, run nextSlide()
 $(document).ready(function() {
   nextSlide();
+  $(".cards").click(function(){
+    $("#this-modal").modal({backdrop: "static"});
+  });
 });
 
 const nextSlide = () => {
@@ -20,3 +23,5 @@ const nextSlide = () => {
   // interval 5 seconds
   }, 8000);
 };
+
+
