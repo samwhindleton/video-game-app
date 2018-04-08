@@ -48,7 +48,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
     }).then((response) => {
       this.signupForm = {};
       this.errorMessage = false;
-      this.changeInclude('session-login');
+      this.changeInclude('login');
       // console.log(response);
     }, (error) => {
       console.error(error);
@@ -80,7 +80,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.getUserCreatedGames();
       this.errorMessage = false;
       // change view to profile on login success
-      this.changeInclude('user-view');
+      this.changeInclude('profile');
     }, (error) => {
       console.error(error);
       if(error.status === 401) {
@@ -199,7 +199,7 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       if (this.indexOfEditFormToShow != null) {
         this.indexOfEditFormToShow = null;
       };
-      this.changeInclude('user-view');
+      this.changeInclude('profile');
       // run these commands
       this.getAllGames();
       this.getUserCreatedGames();
