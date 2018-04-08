@@ -57,18 +57,20 @@ styles applied to multi
 .contact,
 .game-create,
 .game-edit,
-.game-view-all,
 .game-view,
 .session,
-.user-view {
+.profile {
   min-height: 100vh;
   width: 100vw;
 }
 
-.about > a, .game-create > a {
+.about > a, .game-create > a, .game-view > a {
   visibility: hidden;
 }
 
+.about > .container > .row > h1, .game-view > .container > .row > h1 {
+  margin: 2em 0 0.7em 0;
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
@@ -229,32 +231,111 @@ button.btn.btn-primary:hover {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game view(all)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.game-view-all {
-  background: var(--slate);
+.game-view {
+  /* background: var(--slate);
   color: var(--dull);
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
 }
 
+.game-view > .container {
+  max-width: 900px;
+}
+
+.game-view > .container > .row > h1 {
+  position: relative;
+}
+
+.game-view > .container > .row.cards {
+  background: rgba(197, 198, 199, 0.1);
+  border-radius: 5px;
+  margin: 0 0 10px 0;
+  /* horizontal | vertical | blur | optional spread | color */
+  -webkit-box-shadow: 0 3px 2px var(--slate);
+  -moz-box-shadow: 0 3px 2px var(--slate);
+  box-shadow: 0 3px 2px var(--slate);
+  -moz-transition-duration: 500ms;
+  -o-transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+  transition-duration: 500ms;
+  position: relative;
+}
+
+.game-view > .container > .row > .col-md-5.hv {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.game-view > .container > .row > .col-md-5 > img {
+  height: 240px;
+  width: 320px;
+  padding: 10px 0;
+  /* prevents image distortion */
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.game-view-background {
+  height: 200%;
+  width: 500%;
+  position: absolute;
+  left: -50%;
+  top: -190%;
+  background: var(--energy);
+  transform: rotate(-7deg);
+  /* horizontal | vertical | blur | optional spread | color */
+  -webkit-box-shadow: 0 3px 4px 1px var(--slate);
+  -moz-box-shadow: 0 3px 4px 1px var(--slate);
+  box-shadow: 0 3px 4px 1px var(--slate);
+}
+
+.modal-content > .modal-header {
+  background: var(--slate) !important;
+  color: var(--energy) !important;
+  padding: 20px;
+}
+
+.modal-content > .modal-body {
+  background: var(--white-tee) !important;
+  color: var(--night) !important;
+  padding: 20px 25px;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header > p {
+  margin-bottom: 0.2em;
+}
+
+.fa-times {
+  color: var(--energy);
+  font-size: 1.3em;
+
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game view(single)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.game-view {
+/* .game-view {
   background: rgb(246, 247, 189);
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
+} */
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 user profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.user-view {
+.profile {
   background: rgb(255, 223, 254);
   align-items: center;
   display: flex;
@@ -298,14 +379,6 @@ about
   flex-direction: column;
   justify-content: center;
 }
-
-.about > .container > .row > h1 {
-  margin: 2em 0 0.7em 0;
-}
-
-/* div.about-p.row.align-items-center {
-  padding-bottom: 100px;
-} */
 
 .about-p > .col-md-6 {
   background: var(--night);
