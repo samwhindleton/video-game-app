@@ -196,8 +196,11 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
       this.createFormGenreSeleted
       console.log(response);
       this.errorMessage = false;
-      if (this.indexOfEditFormToShow != null) {
-        this.indexOfEditFormToShow = null;
+      if (this.indexOfCommentsToShow != null) {
+        this.indexOfCommentsToShow = null;
+      };
+      if (this.indexOfEditsToShow = !null) {
+        this.indexOfEditsToShow = null;
       };
       this.changeInclude('profile');
       // run these commands
@@ -258,14 +261,16 @@ app.controller('MainController', ['$scope','$cookies','$http', function($scope,$
     }).then((response) => {
       this.createForm = {};
       this.getAllGames();
+      this.getUserCreatedGames();
       console.log(response.data);
     }, error => {
       console.error(error);
     }).catch(error => console.error('Catch: ', error));
   };
 
-  // edit index show/hide
-  this.indexOfEditFormToShow = null;
+  // comment, edit index show/hide
+  this.indexOfCommentsToShow = null;
+  this.indexOfEditsToShow = null;
   // update edit game function
   this.updateEditGame = (games) => {
     console.log("editing game");

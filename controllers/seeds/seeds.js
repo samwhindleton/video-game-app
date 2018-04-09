@@ -200,7 +200,7 @@ const newGames = [
     user_id: "",
   },
   {
-    title: "Pokemon Red, Blue, and Greenpmr",
+    title: "Pokemon Red, Blue, and Green",
     releaseYear: 1969,
     genre: "Default",
     image: "/assets/game-images/pokemon.jpg",
