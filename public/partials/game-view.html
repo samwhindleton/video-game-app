@@ -7,7 +7,7 @@
     </div>
 
     <!-- repeat games, cards -->
-    <div ng-repeat="games in main.allGames" class="row cards">
+    <div ng-repeat="games in main.allGames | orderBy : 'title'" class="row cards">
       <div class="col-md col-md-5 hv" data-toggle="modal" data-target="#game{{$index}}">
         <img ng-src="{{games.image}}" alt="image of {{games.name}}" class="rounded">
       </div>
@@ -47,7 +47,7 @@
         </div>
 
         <!-- order comments by newest -->
-        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'+':true track by $index">
+        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'$index':true">
         <!-- <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index"> -->
           <div class="col-md col-md-12">
             <p>{{comments}}</p>

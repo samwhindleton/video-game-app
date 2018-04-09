@@ -2,7 +2,7 @@
 
 ## Unit 3 | Project
 
-### Video Game Review App - [WASD.it](https://video-game-app.herokuapp.com/)
+### Video Game Review App - [WASD](https://video-game-app.herokuapp.com/)
 
 #### Created By [Ben Peters](https://github.com/benpeterswake) & [Sam Whindleton](https://github.com/samwhindleton)
 
