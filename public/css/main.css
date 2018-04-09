@@ -1,9 +1,9 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fonts
 font-family: 'IBM Plex Sans', sans-serif;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Monofett', cursive;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Monofett');
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,6 +22,23 @@ color palette
   --white-tee: #eaeef2;
   --energy: #66fcf1;
   --stain: #45a29e;
+
+  --welcome:
+  0 0.1vmin 0 hsl(174, 5%, 80%),
+  0 0.2vmin 0 hsl(174, 5%, 75%),
+  0 0.3vmin 0 hsl(174, 5%, 70%),
+  0 0.4vmin 0 hsl(174, 5%, 66%),
+  0 0.5vmin 0 hsl(174, 5%, 64%),
+  0 0.6vmin 0 hsl(174, 5%, 62%),
+  0 0.7vmin 0 hsl(174, 5%, 61%),
+  0 0.8vmin 0 hsl(174, 5%, 60%),
+
+  0 0 0.5vmin rgba(0, 0, 0, 0.3),
+  0 0.1vmin 0.3vmin rgba(0, 0, 0, 0.2),
+  0 0.3vmin 0.5vmin rgba(0, 0, 0, 0.2),
+  0 0.5vmin 1vmin rgba(0, 0, 0, 0.2),
+  0 1vmin 1vmin rgba(0, 0, 0, 0.2),
+  0 2vmin 2vmin rgba(0, 0, 0, 0.05);
 }
 
 
@@ -82,10 +99,16 @@ styles applied to multi
 }
 
 .about > .container > .row > h1, .game-view > .container > .row > h1, .session > h1 {
+  font-weight: bold;
   position: relative;
   margin: 2.2em 0.3em 2.4em;
   text-align: center;
 }
+
+.profile > .container > .row > h1 {
+  text-shadow: var(--welcome);
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
@@ -120,12 +143,20 @@ navbar
 }
 
 .navbar-brand {
-  color: var(--energy) !important;
+  background: var(--energy);
+  border-radius: 5px;
+  color: var(--night) !important;
+  font-family: 'Monofett', cursive;
+  font-size: 32px;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .navbar-brand:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 header, carousel
