@@ -106,6 +106,15 @@ styles applied to multi
 }
 
 .profile > .container > .row > h1 {
+  background: var(--energy);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 0.7em;
+  transform: rotate(-2.3deg);
+  /* horizontal | vertical | blur | optional spread | color */
+  -webkit-box-shadow: 0 3px 4px 1px var(--slate);
+  -moz-box-shadow: 0 3px 4px 1px var(--slate);
+  box-shadow: 0 3px 4px 1px var(--slate);
   text-shadow: var(--welcome);
 }
 
