@@ -1,5 +1,5 @@
 // on document ready, run nextSlide()
-$(document).ready(function() {
+$(document).ready(() => {
   nextSlide();
 });
 
@@ -14,11 +14,9 @@ const nextSlide = () => {
     // activate carousel
     $("#slide").carousel("next");
     // enable carousel controls
-    $(".right").click(function(){
+    $(".right").click(() => {
         $("#slide").carousel("next");
     });
-  // interval 5 seconds
+  // interval 8 seconds
   }, 8000);
 };
-
-

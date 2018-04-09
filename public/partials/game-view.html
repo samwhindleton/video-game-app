@@ -3,7 +3,7 @@
   <div class="game-view-background"></div>
   <div class="container">
     <div class="row justify-content-center">
-      <h1>games list</h1>
+      <h1>Games List</h1>
     </div>
 
     <!-- repeat games, cards -->
@@ -32,7 +32,8 @@
 
         <!-- if there is a signed in user, show add comment form -->
         <div ng-if="main.currentUser">
-          <form ng-submit="main.updateGameComment(games)">
+          <form ng-submit="main.updateGameComment(games)" class="px-5 py-5">
+            <h3 class="form-title">Add Comment</h3>
             <div class="form-group">
               <label for="username">username</label>
               <input class="form-control" name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
@@ -45,7 +46,9 @@
           </form>
         </div>
 
-        <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index">
+        <!-- order comments by newest -->
+        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'+':true track by $index">
+        <!-- <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index"> -->
           <div class="col-md col-md-12">
             <p>{{comments}}</p>
           </div>

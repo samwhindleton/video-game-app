@@ -1,9 +1,9 @@
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 fonts
 font-family: 'IBM Plex Sans', sans-serif;
-font-family: 'Montserrat', sans-serif;
+font-family: 'Monofett', cursive;
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans|Monofett');
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -22,6 +22,23 @@ color palette
   --white-tee: #eaeef2;
   --energy: #66fcf1;
   --stain: #45a29e;
+
+  --welcome:
+  0 0.1vmin 0 hsl(174, 5%, 80%),
+  0 0.2vmin 0 hsl(174, 5%, 75%),
+  0 0.3vmin 0 hsl(174, 5%, 70%),
+  0 0.4vmin 0 hsl(174, 5%, 66%),
+  0 0.5vmin 0 hsl(174, 5%, 64%),
+  0 0.6vmin 0 hsl(174, 5%, 62%),
+  0 0.7vmin 0 hsl(174, 5%, 61%),
+  0 0.8vmin 0 hsl(174, 5%, 60%),
+
+  0 0 0.5vmin rgba(0, 0, 0, 0.3),
+  0 0.1vmin 0.3vmin rgba(0, 0, 0, 0.2),
+  0 0.3vmin 0.5vmin rgba(0, 0, 0, 0.2),
+  0 0.5vmin 1vmin rgba(0, 0, 0, 0.2),
+  0 1vmin 1vmin rgba(0, 0, 0, 0.2),
+  0 2vmin 2vmin rgba(0, 0, 0, 0.05);
 }
 
 
@@ -36,6 +53,19 @@ html {
 body {
   background: var(--night);
   font-family: 'IBM Plex Sans', sans-serif;
+  /* Found on CSS-TRICKS
+  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 a {
@@ -69,9 +99,16 @@ styles applied to multi
 }
 
 .about > .container > .row > h1, .game-view > .container > .row > h1, .session > h1 {
+  font-weight: bold;
   position: relative;
-  margin: 2.2em 0 2.4em 0;
+  margin: 2.2em 0.3em 2.4em;
+  text-align: center;
 }
+
+.profile > .container > .row > h1 {
+  text-shadow: var(--welcome);
+}
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 navbar
@@ -106,12 +143,20 @@ navbar
 }
 
 .navbar-brand {
-  color: var(--energy) !important;
+  background: var(--energy);
+  border-radius: 5px;
+  color: var(--night) !important;
+  font-family: 'Monofett', cursive;
+  font-size: 32px;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .navbar-brand:hover {
-  transform: scale(0.9);
+  transform: scale(0.98);
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 header, carousel
@@ -228,15 +273,7 @@ button.btn.btn-primary:hover {
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game view(all)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.game-view {
-  /* background: var(--slate);
-  color: var(--dull);
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; */
-}
-
+/* .game-view {} */
 
 .game-view-background {
   height: 500%;
@@ -306,6 +343,19 @@ game view(all)
 
 .game-view > .container > .row > .col-md-7 > .row > h1 {
   cursor: pointer;
+  /* Found on CSS-TRICKS
+  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
 }
 
 .game-view > .container > .row > .col-md-7 > .row > p {
@@ -339,6 +389,9 @@ game view(all)
   justify-content: center;
 }
 
+.game-view-comments > div > form {
+  margin-bottom: 18px;
+}
 .fa-minus {
   color: var(--energy);
   font-size: 1.7em;
@@ -352,9 +405,9 @@ game view(all)
   margin-bottom: 15px;
 }
 
-.game-view-user-comments:nth-child(odd) {
+.game-view-user-comments:nth-child(even) {
   width: calc(100% - 30px);
-  background: var(--dull);
+  background: rgba(197, 198, 199, 0.2);
 }
 
 .game-view-user-comments > .col-md > p {
@@ -383,6 +436,38 @@ game view(all)
   margin-bottom: 0.2em;
 }
 
+.modal-title {
+  /* Found on CSS-TRICKS
+  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+.modal-body {
+  /* Found on CSS-TRICKS
+  https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/ */
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
 .fa-times {
   color: var(--energy);
   font-size: 1.3em;
@@ -391,26 +476,29 @@ game view(all)
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game view(single)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-/* .game-view {
-  background: rgb(246, 247, 189);
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
+/* .game-view {} */
 
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 user profile
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.profile {
-  background: rgb(255, 223, 254);
-  align-items: center;
+/* .profile {} */
+
+.edit-delete-button > .col-md {
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
+.fa-edit, .fa-trash-alt {
+  color: var(--stain);
+  font-size: 2.3em;
+}
+
+.fa-trash-alt {
+  color: firebrick;
+}
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 game add/create
@@ -431,8 +519,14 @@ game edit
   justify-content: center;
 }
 
+.form-title {
+  text-align: center;
+}
+
 .edit-success {
+  background: var(--night);
   color: var(--energy);
+  text-align: center;
 }
 
 
