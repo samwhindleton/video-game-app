@@ -5,65 +5,78 @@
     <div class="row justify-content-center">
       <h1>games list</h1>
     </div>
-    <!-- <div ng-repeat="games in main.allGames" class="row align-items-center"> -->
-    <div ng-repeat="games in main.allGames" class="row cards" role="dialog" data-toggle="modal" data-target="#game{{$index}}">
-      <div class="col-md col-md-5 hv">
+
+    <!-- repeat games, cards -->
+    <div ng-repeat="games in main.allGames" class="row cards">
+      <div class="col-md col-md-5 hv" data-toggle="modal" data-target="#game{{$index}}">
         <img ng-src="{{games.image}}" alt="image of {{games.name}}" class="rounded">
       </div>
       <div class="col-md col-md-7">
-        <h1>{{games.title}}</h1>
-        <p>genre: {{games.genre}}</p>
-        <p>release year: {{games.releaseYear}}</p>
-      </div>
-      <!-- modal content -->
-      <div class="modal fade this-modal" id="game{{$index}}" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-          <div class="modal-content">
-            <!-- modal header -->
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <i class="fas fa-times"></i>
-              </button>
-              <h1 class="modal-title" id="exampleModalLongTitle">{{games.title}}</h1>
-              <p>genre: {{games.genre}}</p>
-              <p>release year: {{games.releaseYear}}</p>
-            </div>
-            <!-- modal body -->
-            <div class="modal-body">
-              <h4>{{games.description}}</h4>
-
-              <!-- if there is a signed in user, show add comment form -->
-              <div ng-if="main.currentUser">
-                <form ng-submit="main.updateGameComment(games)">
-                  <input name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
-                  <textarea ng-model="main.createForm.comments" type="text" placeholder="add new comment" required></textarea>
-                  <!-- submit button -->
-                  <!-- <button type="submit">submit</button> -->
-                  <!-- modal footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                  </div>
-                </form>
-              </div>
-
-              <h5>comments:</h5>
-                <ul>
-                  <li ng-repeat="comments in games.comments track by $index">
-                    <div class="row">
-                      <div class="col-md col-md-4">
-                        {{main.currentUser}}
-                      </div>
-                      <div class="col-md col-md-8">
-                        {{comments}}
-                        </div>
-                    </div>
-                  </li>
-                </ul>
-            </div> <!-- /.modal-body -->
-          </div> <!-- /.modal-content -->
+        <div class="row">
+          <h1 data-toggle="modal" data-target="#game{{$index}}">{{games.title}}</h1>
+          <p data-toggle="modal" data-target="#game{{$index}}">genre: {{games.genre}}</p>
+          <p data-toggle="modal" data-target="#game{{$index}}">release year: {{games.releaseYear}}</p>
         </div>
-      </div> <!-- /modal end -->
-    </div> <!-- /ng-repeat -->
-  </div>
+        <div class="row">
+          <p class="game-view-comments-button" ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">comments</p>
+        </div>
+      </div>
+
+      <!-- view/show comments -->
+      <div class="game-view-comments col-md" ng-if="$index === main.indexOfShow">
+        <div class="comment-divider"></div>
+        <!-- close comments button -->
+        <span ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">
+          <i class="fas fa-minus"></i>
+        </span>
+
+        <!-- if there is a signed in user, show add comment form -->
+        <div ng-if="main.currentUser">
+          <form ng-submit="main.updateGameComment(games)">
+            <div class="form-group">
+              <label for="username">username</label>
+              <input class="form-control" name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
+            </div>
+            <div  class="form-group">
+              <label for="comment">comment</label>
+              <textarea ng-model="main.createForm.comments" class="form-control" autocomplete="off" maxlength="5000" minlength="10" rows="8" cols="44" placeholder="game server crash on start! how to fix??? help plz, i is noob!!!!!" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">add comment</button>
+          </form>
+        </div>
+
+        <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index">
+          <div class="col-md col-md-12">
+            <p>{{comments}}</p>
+          </div>
+        </div>
+      </div> <!-- /view comments -->
+    </div> <!-- /ng-repeat game cards-->
+
+    <!-- repeat games, modal -->
+    <div ng-repeat="games in main.allGames" class="modal fade" id="game{{$index}}" tabindex="-1" role="dialog" aria-labelledby="gameIndexModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <!-- modal header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+              <i class="fas fa-times"></i>
+            </button>
+            <h1 class="modal-title" id="game{{$index}}">{{games.title}}</h1>
+            <p>genre: {{games.genre}}</p>
+            <p>release year: {{games.releaseYear}}</p>
+          </div> <!-- /.modal-header -->
+
+          <!-- modal body -->
+          <div class="modal-body">
+            <h4>{{games.description}}</h4>
+          </div> <!-- /.modal-body -->
+
+          <!-- modal footer -->
+          <!-- <div class="modal-footer"></div> -->
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
+    </div> <!-- /modal start -->
+  </div> <!-- /.container -->
   <a>hello, world!</a>
-</div> <!-- /.game-view-all -->
+</div> <!-- /.game-view -->

@@ -68,8 +68,9 @@ styles applied to multi
   visibility: hidden;
 }
 
-.about > .container > .row > h1, .game-view > .container > .row > h1 {
-  margin: 2em 0 0.7em 0;
+.about > .container > .row > h1, .game-view > .container > .row > h1, .session > h1 {
+  position: relative;
+  margin: 2.2em 0 2.4em 0;
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -140,10 +141,6 @@ session (login / signup)
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.session > h1 {
-  margin: 2em 0 0.7em 0;
 }
 
 .session > form {
@@ -240,6 +237,21 @@ game view(all)
   justify-content: center; */
 }
 
+
+.game-view-background {
+  height: 500%;
+  width: 500%;
+  position: absolute;
+  left: -250%;
+  top: -474%;
+  background: var(--energy);
+  transform: rotate(-2.3deg);
+  /* horizontal | vertical | blur | optional spread | color */
+  -webkit-box-shadow: 0 3px 4px 1px var(--slate);
+  -moz-box-shadow: 0 3px 4px 1px var(--slate);
+  box-shadow: 0 3px 4px 1px var(--slate);
+}
+
 .game-view > .container {
   max-width: 900px;
 }
@@ -267,30 +279,87 @@ game view(all)
   align-items: center;
   display: flex;
   justify-content: center;
+  cursor: pointer;
   padding: 5px 10px;
 }
 
 .game-view > .container > .row > .col-md-5 > img {
   height: 240px;
   width: 320px;
-  padding: 10px 0;
+  margin: 15px;
   /* prevents image distortion */
   object-fit: cover;
   object-position: 50% 50%;
 }
 
-.game-view-background {
-  height: 200%;
-  width: 500%;
-  position: absolute;
-  left: -50%;
-  top: -190%;
-  background: var(--energy);
-  transform: rotate(-7deg);
-  /* horizontal | vertical | blur | optional spread | color */
-  -webkit-box-shadow: 0 3px 4px 1px var(--slate);
-  -moz-box-shadow: 0 3px 4px 1px var(--slate);
-  box-shadow: 0 3px 4px 1px var(--slate);
+.game-view > .container > .row > .col-md-7 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-view > .container > .row > .col-md-7 > .row {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-view > .container > .row > .col-md-7 > .row > h1 {
+  cursor: pointer;
+}
+
+.game-view > .container > .row > .col-md-7 > .row > p {
+  cursor: pointer;
+  margin-bottom: 0.2em;
+}
+
+.game-view-comments-button {
+  width: 98px;
+  background: var(--night);
+  border: 10px solid var(--night);
+  border-radius: 5px;
+  color: var(--white-tee);
+}
+
+.comment-divider {
+  height: 1px;
+  width: 100%;
+  background: var(--slate);
+}
+
+.game-view-comments span {
+  height: 32px;
+  width: 42px;
+  background: var(--night);
+  border-radius: 5px;
+  margin: 0.8em 0 1.7em;
+  margin-left: calc(100% - 2.6em);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.fa-minus {
+  color: var(--energy);
+  font-size: 1.7em;
+}
+
+.game-view-user-comments {
+  margin-left: 15px;
+}
+
+.game-view-user-comments:last-child {
+  margin-bottom: 15px;
+}
+
+.game-view-user-comments:nth-child(odd) {
+  width: calc(100% - 30px);
+  background: var(--dull);
+}
+
+.game-view-user-comments > .col-md > p {
+  margin: 0;
+  padding: 15px;
 }
 
 .modal-content > .modal-header {
@@ -317,7 +386,6 @@ game view(all)
 .fa-times {
   color: var(--energy);
   font-size: 1.3em;
-
 }
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
