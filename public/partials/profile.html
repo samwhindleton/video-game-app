@@ -109,7 +109,7 @@
         </form>
 
         <!-- order comments by newest -->
-        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'+':true track by $index">
+        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'$index':true">
 
         <!-- <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index"> -->
           <div class="col-md col-md-12">
