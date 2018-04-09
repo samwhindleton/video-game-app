@@ -1,32 +1,52 @@
-<!-- profile -->
-<div class="profile" id="profile">
+<!-- game view(all) section -->
+<div class="profile game-view session" id="profile">
   <div class="game-view-background"></div>
-  <div>
-    <h1>user profile page</h1>
-  </div>
-  <!-- user added/created games -->
-  <ul>
-    <li ng-repeat="games in main.userCreatedGames">
-      <span ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">{{games.title}}</span>
-      <span>
-        <a ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">
-          <i class="fas fa-eye"></i>
-        </a>
-        <!-- edit button
-        when clicked, only show edit view of selected game -->
-        <a ng-click="(main.indexOfEditFormToShow === $index) ? main.indexOfEditFormToShow = null : main.indexOfEditFormToShow = $index">
-          <i class="fas fa-edit"></i>
-        </a>
-        <!-- delete button -->
-        <a ng-click="main.deleteUserCreatedGame(games._id)">
-          <i class="fas fa-trash-alt"></i>
-        </a>
-      </span>
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1>Hello there {{main.currentUser}}!</h1>
+    </div>
 
-      <!-- game edit -->
-      <div ng-if="$index === main.indexOfEditFormToShow" class="game-create session" id="game-create">
-        <h1>edit game</h1>
+    <!-- repeat games, cards -->
+    <div ng-repeat="games in main.userCreatedGames | orderBy:'+':true" class="row cards">
+      <div class="col-md col-md-5 hv" data-toggle="modal" data-target="#game{{$index}}">
+        <img ng-src="{{games.image}}" alt="image of {{games.name}}" class="rounded">
+      </div>
+      <div class="col-md col-md-7">
+        <div class="row">
+          <h1 data-toggle="modal" data-target="#game{{$index}}">{{games.title}}</h1>
+          <p data-toggle="modal" data-target="#game{{$index}}">genre: {{games.genre}}</p>
+          <p data-toggle="modal" data-target="#game{{$index}}">release year: {{games.releaseYear}}</p>
+        </div>
+
+        <div class="row edit-delete-button">
+          <div class="col-md col-md-12">
+            <!-- edit button -->
+            <a ng-click="(main.indexOfEditToShow === $index) ? main.indexOfEditToShow = null : main.indexOfEditToShow = $index">
+              <i class="fas fa-edit"></i>
+            </a>
+            <!-- delete button -->
+            <a ng-click="main.deleteUserCreatedGame(games._id)">
+              <i class="fas fa-trash-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- comments button -->
+        <div class="row">
+          <p class="game-view-comments-button" ng-click="(main.indexOfCommentsToShow === $index) ? main.indexOfCommentsToShow = null : main.indexOfCommentsToShow = $index">comments</p>
+        </div>
+      </div>
+
+      <!-- edit form -->
+      <div class="game-view-comments col-md" ng-if="$index === main.indexOfEditToShow">
+        <div class="comment-divider"></div>
+        <!-- close comments button -->
+        <span ng-click="(main.indexOfEditToShow === $index) ? main.indexOfEditToShow = null : main.indexOfEditToShow = $index">
+          <i class="fas fa-minus"></i>
+        </span>
+
         <form ng-submit="main.updateEditGame(games)" class="px-5 py-5">
+          <h3 class="form-title">Edit Game</h3>
           <!-- username -->
           <div class="form-group">
             <div ng-if="main.successMessage === true" class="edit-success">successfully updated game {{games.title}}.</div>
@@ -63,46 +83,66 @@
             <textarea ng-model="games.description" class="form-control" autocomplete="off" maxlength="5000" minlength="20" rows="8" cols="44" type="text" required></textarea>
           </div>
           <!-- edit button -->
-          <button type="submit" class="btn btn-primary">edit</button>
+          <button type="submit" class="btn btn-primary">submit edit</button>
         </form>
-        <a>hello, world!</a>
-      </div> <!-- /.game-edit -->
-      <!-- view/show section
-      hidden until view button is clicked -->
-      <div>
-        <!-- view/show form -->
-        <div ng-if="$index === main.indexOfShow">
-          <!-- title -->
-          <p>game title: {{games.title}}</p>
-          <!-- release date -->
-          <p>release year: {{games.releaseYear}}</p>
-          <!-- genre -->
-          <p>genre: {{games.genre}}</p>
-          <!-- image -->
-          <img ng-src="{{games.image}}" alt="image of {{games.name}}">
-          <!-- description -->
-          <p>description: {{games.description}}</p>
-          <!-- display comments -->
-          <p>comments:
-            <ul>
-              <li ng-repeat="comments in games.comments track by $index">{{comments}}</li>
-            </ul>
-          </p>
+      </div> <!-- /edit form -->
 
-          <!-- if there is a signed in user, show add comment form -->
-          <div ng-if="main.currentUser">
-            <form ng-submit="main.updateGameComment(games)">
-              <input name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
-              <textarea ng-model="main.createForm.comments" type="text" placeholder="add new comment" required></textarea>
-              <!-- submit button -->
-              <button type="submit">submit</button>
-            </form>
+      <!-- view/show comments -->
+      <div class="game-view-comments col-md" ng-if="$index === main.indexOfCommentsToShow">
+        <div class="comment-divider"></div>
+        <!-- close comments button -->
+        <span ng-click="(main.indexOfCommentsToShow === $index) ? main.indexOfCommentsToShow = null : main.indexOfCommentsToShow = $index">
+          <i class="fas fa-minus"></i>
+        </span>
+
+        <form ng-submit="main.updateGameComment(games)" class="px-5 py-5">
+          <h3 class="form-title">Add Comment</h3>
+          <div class="form-group">
+            <label for="username">username</label>
+            <input class="form-control" name="username" ng-model="main.currentUser" placeholder="{{main.currentUser}}" type="text" readonly>
           </div>
-          <!-- close/collapse button
-          closes view/show container when selected -->
-          <button ng-click="(main.indexOfShow === $index) ? main.indexOfShow = null : main.indexOfShow = $index">close</button>
+          <div  class="form-group">
+            <label for="comment">comment</label>
+            <textarea ng-model="main.createForm.comments" class="form-control" autocomplete="off" maxlength="5000" minlength="10" rows="8" cols="44" placeholder="have you tried turning it off and on again?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">add comment</button>
+        </form>
+
+        <!-- order comments by newest -->
+        <div class="row game-view-user-comments" ng-repeat="comments in games.comments | orderBy:'+':true track by $index">
+
+        <!-- <div class="row game-view-user-comments" ng-repeat="comments in games.comments track by $index"> -->
+          <div class="col-md col-md-12">
+            <p>{{comments}}</p>
+          </div>
         </div>
-      </div> <!-- end of view/show section -->
-    </li>
-  </ul>
-</div> <!-- /.profile -->
+      </div> <!-- /view comments -->
+    </div> <!-- /ng-repeat game cards-->
+
+    <!-- repeat games, modal -->
+    <div ng-repeat="games in main.userCreatedGames | orderBy:'+':true" class="modal fade" id="game{{$index}}" tabindex="-1" role="dialog" aria-labelledby="gameIndexModal" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <!-- modal header -->
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="close">
+              <i class="fas fa-times"></i>
+            </button>
+            <h1 class="modal-title" id="game{{$index}}">{{games.title}}</h1>
+            <p>genre: {{games.genre}}</p>
+            <p>release year: {{games.releaseYear}}</p>
+          </div> <!-- /.modal-header -->
+
+          <!-- modal body -->
+          <div class="modal-body">
+            <h4>{{games.description}}</h4>
+          </div> <!-- /.modal-body -->
+
+          <!-- modal footer -->
+          <!-- <div class="modal-footer"></div> -->
+        </div> <!-- /.modal-content -->
+      </div> <!-- /.modal-dialog -->
+    </div> <!-- /modal start -->
+  </div> <!-- /.container -->
+  <a>hello, world!</a>
+</div> <!-- /.game-view -->

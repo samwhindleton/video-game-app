@@ -1,7 +1,7 @@
 <!-- game add -->
 <div class="game-create session" id="game-create">
   <div class="game-view-background"></div>
-  <h1>add game</h1>
+  <h1>Add Game</h1>
   <form ng-submit="main.create()" class="px-5 py-5">
     <div ng-if="main.errorMessage === true" class="session-error">That game already exists.</div>
     <!-- username -->
@@ -36,7 +36,7 @@
     <!-- description -->
     <div class="form-group">
       <label for="description">description <span class="form-asterisk">*</span></label>
-      <textarea ng-model="main.createForm.description" class="form-control" autocomplete="off" maxlength="5000" minlength="20" rows="8" cols="44" placeholder="Your awesome WASD.it story of [Game Title]" type="text" required></textarea>
+      <textarea ng-model="main.createForm.description" class="form-control" autocomplete="off" maxlength="5000" minlength="20" rows="8" cols="44" placeholder="Your awesome WASD story of [Game Title]" type="text" required></textarea>
     </div>
     <!-- create button -->
     <button type="submit" class="btn btn-primary">submit</button>
